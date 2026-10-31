@@ -1,59 +1,57 @@
 import React, { useState } from 'react';
-import { Gauge, AlertTriangle, TrendingUp, CheckCircle, ArrowLeft, MessageCircle, Sparkles, Loader2 } from 'lucide-react';
+import { 
+  Gauge, 
+  TrendingUp, 
+  AlertTriangle, 
+  Sparkles, 
+  ArrowLeft, 
+  CheckCircle2, 
+  DollarSign, 
+  Activity,
+  Layers,
+  BrainCircuit,
+  Clock
+} from 'lucide-react';
 
 export default function PerformanceMeter() {
-  const [storeUrl, setStoreUrl] = useState('');
-  const [monthlySpend, setMonthlySpend] = useState(15000);
-  const [currentRoas, setCurrentRoas] = useState(2.3);
-  const [primaryChannel, setPrimaryChannel] = useState('mixed');
+  const [monthlySpend, setMonthlySpend] = useState(25000);
+  const [currentRoas, setCurrentRoas] = useState(2.2);
+  const [primaryChannel, setPrimaryChannel] = useState('meta');
   const [hasPixel, setHasPixel] = useState(true);
   const [hasSeo, setHasSeo] = useState(false);
 
-  // Form lead submission state
-  const [showLeadModal, setShowLeadModal] = useState(false);
+  // Form Lead State
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
   const [submittedAudit, setSubmittedAudit] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  // Calculations
-  const calculateLocalMetrics = () => {
-    let wasteRatio = 0.32;
-    if (currentRoas < 1.8) wasteRatio = 0.44;
-    else if (currentRoas > 3.5) wasteRatio = 0.16;
+  // Instant calculation
+  const calculateInstant = () => {
+    let score = 50;
+    if (currentRoas >= 4.0) score += 25;
+    else if (currentRoas >= 2.5) score += 15;
+    else score -= 10;
 
-    if (!hasPixel) wasteRatio += 0.08;
-    if (!hasSeo) wasteRatio += 0.05;
+    if (hasPixel) score += 15; else score -= 15;
+    if (hasSeo) score += 10; else score -= 5;
+    score = Math.max(15, Math.min(96, score));
 
-    const estimatedWaste = Math.round(monthlySpend * wasteRatio);
-    let score = Math.round((currentRoas / 4.5) * 60);
-    if (hasPixel) score += 20;
-    if (hasSeo) score += 15;
-    score = Math.max(25, Math.min(95, score));
+    const benchmarkRoas = hasSeo ? 4.5 : 3.8;
+    const potentialSales = monthlySpend * benchmarkRoas;
+    const currentSales = monthlySpend * currentRoas;
+    const waste = Math.max(0, Math.round(monthlySpend * 0.35 + (potentialSales - currentSales) * 0.12));
+    const growth = Math.round(((potentialSales - currentSales) / Math.max(1, currentSales)) * 100);
 
-    const growthPct = Math.round((1 - (currentRoas / 4.5)) * 140) + 30;
-
-    return {
-      waste: estimatedWaste,
-      score,
-      growth: Math.max(35, Math.min(220, growthPct))
-    };
+    return { score, waste, growth: Math.max(25, growth) };
   };
 
-  const metrics = calculateLocalMetrics();
+  const metrics = calculateInstant();
 
-  const handleOpenLeadGate = (e) => {
+  const handleAuditSubmit = async (e) => {
     e.preventDefault();
-    setShowLeadModal(true);
-  };
-
-  const handleSubmitAudit = async (e) => {
-    e.preventDefault();
-    if (!phone || phone.trim().length < 8) {
-      alert('يرجى إدخال رقم هاتف صحيح للتواصل عبر الواتساب.');
-      return;
-    }
+    if (!fullName || !phone) return;
 
     setLoading(true);
     try {
@@ -62,9 +60,8 @@ export default function PerformanceMeter() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           full_name: fullName,
-          phone: phone,
-          email: email,
-          store_url: storeUrl || 'https://mystore.sa',
+          phone,
+          email,
           monthly_ad_spend: monthlySpend,
           current_roas: currentRoas,
           primary_channel: primaryChannel,
@@ -72,17 +69,14 @@ export default function PerformanceMeter() {
           has_seo: hasSeo
         })
       });
-
       const data = await res.json();
       setSubmittedAudit(data);
     } catch (err) {
-      console.error(err);
-      // Fallback local calculation
       setSubmittedAudit({
         score: metrics.score,
         estimated_ad_waste: metrics.waste,
         growth_potential_pct: metrics.growth,
-        diagnostic_summary: `تم تقييم نشاطك الإعلاني بنجاح بمعدل هدر تقديري ${metrics.waste.toLocaleString('ar-SA')} ر.س شهرياً.`
+        diagnostic_summary: `تم تقييم نشاطك التسويقي بنجاح. بمعدل هدر تقديري ${metrics.waste.toLocaleString('ar-SA')} ر.س شهرياً.`
       });
     } finally {
       setLoading(false);
@@ -90,305 +84,231 @@ export default function PerformanceMeter() {
   };
 
   return (
-    <section id="performance-meter" className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="performance-meter" className="py-24 relative overflow-hidden">
+      
+      {/* Background Glows */}
+      <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-[#ce23bd]/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-[400px] h-[400px] bg-[#8551ef]/15 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#160a38] border border-[#ce23bd]/40 shadow-[0_0_20px_rgba(206,35,189,0.25)] text-[#ce23bd] text-xs font-bold mb-4">
             <Gauge className="w-4 h-4" />
-            <span>تشخيص فوري مدعوم بالذكاء الاصطناعي</span>
+            <span>دليلك الحقيقي لنجاح مشروعك</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black font-cairo text-white mb-4">
-            أداة مقياس الأداء الشامل | دليلك الحقيقي لنجاح مشروعك
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+            أداة <span className="gradient-text-via">مقياس الأداء الشامل</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
-            لا تضيع جهودك وميزانيتك بعد الآن. هذه الأداة ستساعدك على فهم كل ما يحدث في نشاطك التسويقي واكتشاف الهدر الإعلاني بلمسة زر.
+
+          <p className="mt-4 text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            لا تضيع جهودك وميزانيتك بعد الآن. هذه الأداة ستساعدك على فهم كل ما يحدث في نشاطك التسويقي بلمسة زر واتخاذ قرارات ذكية مبنية على بيانات حقيقية.
           </p>
         </div>
 
-        {/* The Calculator Card Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* 4 Feature Cards (Directly from reference site) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
           
-          {/* Controls Form (7 Cols) */}
-          <div className="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
-            <h3 className="text-base sm:text-lg font-black font-cairo text-white flex items-center gap-2 border-b border-slate-800/80 pb-4">
-              <span>أدخل مؤشرات حملاتك التسويقية الحالية</span>
-            </h3>
-
-            {/* Store URL Input */}
-            <div>
-              <label className="block text-xs font-bold text-slate-300 mb-2">رابط المتجر أو الموقع الإلكتروني:</label>
-              <input
-                type="url"
-                value={storeUrl}
-                onChange={(e) => setStoreUrl(e.target.value)}
-                placeholder="https://yourstore.sa"
-                className="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-3 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-mono"
-              />
+          <div className="via-card p-6 rounded-3xl relative overflow-hidden group">
+            <div className="w-12 h-12 rounded-2xl bg-[#ce23bd]/15 border border-[#ce23bd]/30 flex items-center justify-center text-[#ce23bd] mb-4 group-hover:scale-110 transition-transform">
+              <Activity className="w-6 h-6" />
             </div>
-
-            {/* Spend Slider */}
-            <div>
-              <div className="flex justify-between items-center text-xs font-bold mb-2">
-                <span className="text-slate-300">الميزانية الإعلانية الشهرية:</span>
-                <span className="text-cyan-400 font-mono font-black text-sm">{monthlySpend.toLocaleString('ar-SA')} ر.س</span>
-              </div>
-              <input
-                type="range"
-                min="3000"
-                max="100000"
-                step="1000"
-                value={monthlySpend}
-                onChange={(e) => setMonthlySpend(Number(e.target.value))}
-                className="w-full accent-cyan-400 cursor-pointer h-2 bg-slate-800 rounded-lg"
-              />
-              <div className="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
-                <span>3,000 ر.س</span>
-                <span>50,000 ر.س</span>
-                <span>100,000+ ر.س</span>
-              </div>
-            </div>
-
-            {/* ROAS Slider */}
-            <div>
-              <div className="flex justify-between items-center text-xs font-bold mb-2">
-                <span className="text-slate-300">العائد الحالي على الإنفاق الإعلاني (ROAS):</span>
-                <span className="text-emerald-400 font-mono font-black text-sm">{currentRoas}x</span>
-              </div>
-              <input
-                type="range"
-                min="1.0"
-                max="5.0"
-                step="0.1"
-                value={currentRoas}
-                onChange={(e) => setCurrentRoas(Number(e.target.value))}
-                className="w-full accent-emerald-400 cursor-pointer h-2 bg-slate-800 rounded-lg"
-              />
-              <div className="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
-                <span>1.0x (منخفض)</span>
-                <span>2.5x (متوسط)</span>
-                <span>4.0x+ (ممتاز)</span>
-              </div>
-            </div>
-
-            {/* Channel Options */}
-            <div>
-              <label className="block text-xs font-bold text-slate-300 mb-2">المنصة الإعلانية الرئيسية:</label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                {[
-                  { id: 'snapchat', label: 'سناب شات' },
-                  { id: 'tiktok', label: 'تيك توك' },
-                  { id: 'google', label: 'إعلانات Google' },
-                  { id: 'mixed', label: 'قنوات متعددة' }
-                ].map((c) => (
-                  <button
-                    key={c.id}
-                    type="button"
-                    onClick={() => setPrimaryChannel(c.id)}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold border transition-all ${
-                      primaryChannel === c.id
-                        ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700'
-                    }`}
-                  >
-                    {c.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Technical Readiness Checkboxes */}
-            <div className="pt-2 flex flex-col sm:flex-row gap-4 border-t border-slate-800/80">
-              <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
-                <input
-                  type="checkbox"
-                  checked={hasPixel}
-                  onChange={(e) => setHasPixel(e.target.checked)}
-                  className="rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0"
-                />
-                <span>تتبع التحويلات (Pixel & CAPI) مفعّل بشكل سليم</span>
-              </label>
-
-              <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
-                <input
-                  type="checkbox"
-                  checked={hasSeo}
-                  onChange={(e) => setHasSeo(e.target.checked)}
-                  className="rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0"
-                />
-                <span>المتجر مهيأ لسيو الذكاء الاصطناعي (SEO / GEO)</span>
-              </label>
-            </div>
+            <h3 className="text-lg font-bold text-white mb-2">قياس الأداء بدقة</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              اكتشف العائد الحقيقي على استثمارك في كل حملة إعلانية دون تخمين أو أرقام مضللة.
+            </p>
           </div>
 
-          {/* Results Diagnostic Display (5 Cols) */}
-          <div className="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/30 flex flex-col justify-between relative overflow-hidden bg-gradient-to-b from-slate-900/90 to-slate-950/90 shadow-2xl shadow-cyan-950/30">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="via-card p-6 rounded-3xl relative overflow-hidden group">
+            <div className="w-12 h-12 rounded-2xl bg-[#8551ef]/15 border border-[#8551ef]/30 flex items-center justify-center text-[#8551ef] mb-4 group-hover:scale-110 transition-transform">
+              <Layers className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">تحليل شامل</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              احصل على رؤية متكاملة لأداء السوشيال ميديا، السيو، والتحويلات البيعية في لوحة واحدة.
+            </p>
+          </div>
 
-            <div>
-              <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
-                <span className="text-xs font-bold text-slate-400">النتيجة التقديرية الفورية</span>
-                <span className="text-xs font-mono font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-lg border border-cyan-500/20">
-                  AI Diagnostic
-                </span>
+          <div className="via-card p-6 rounded-3xl relative overflow-hidden group">
+            <div className="w-12 h-12 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-110 transition-transform">
+              <BrainCircuit className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">قرارات ذكية</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              اتخذ خطوات تسويقية صحيحة ومدروسة مبنية على الذكاء الاصطناعي بدلاً من القرارات العشوائية.
+            </p>
+          </div>
+
+          <div className="via-card p-6 rounded-3xl relative overflow-hidden group">
+            <div className="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-110 transition-transform">
+              <Clock className="w-6 h-6" />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">توفير الوقت والمال</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              تجنب الإنفاق غير المجدي على حملات خاسرة واكتشف قنوات النمو السريع فوراً.
+            </p>
+          </div>
+
+        </div>
+
+        {/* Interactive Calculator Workspace */}
+        <div className="via-card p-6 sm:p-10 rounded-3xl border border-[#ce23bd]/30 shadow-[0_20px_50px_rgba(9,0,31,0.9)]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Sliders Input Column */}
+            <div className="lg:col-span-7 space-y-6">
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm font-bold text-slate-200">الميزانية الإعلانية الشهرية:</span>
+                  <span className="text-base font-black text-[#ce23bd] font-mono">
+                    {monthlySpend.toLocaleString('ar-SA')} ر.س
+                  </span>
+                </div>
+                <input 
+                  type="range" 
+                  min="3000" 
+                  max="200000" 
+                  step="1000"
+                  value={monthlySpend} 
+                  onChange={(e) => setMonthlySpend(Number(e.target.value))}
+                  className="w-full h-2 bg-[#1b0c47] rounded-lg appearance-none cursor-pointer accent-[#ce23bd]"
+                />
+                <div className="flex justify-between text-[10px] text-slate-500 mt-1 font-mono">
+                  <span>3,000 ر.س</span>
+                  <span>100,000 ر.س</span>
+                  <span>200,000 ر.س</span>
+                </div>
               </div>
 
-              {/* Gauge Score */}
-              <div className="text-center py-4 mb-6">
-                <div className="text-5xl font-black font-cairo text-white mb-2">
-                  {metrics.score}<span className="text-2xl text-slate-500 font-normal">/100</span>
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm font-bold text-slate-200">معدل العائد الحالي (ROAS):</span>
+                  <span className="text-base font-black text-[#8551ef] font-mono">
+                    {currentRoas}x
+                  </span>
                 </div>
-                <div className={`text-xs font-bold inline-block px-3 py-1 rounded-full ${
-                  metrics.score > 70 
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
-                    : metrics.score > 45 
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' 
-                    : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
-                }`}>
-                  {metrics.score > 70 ? 'أداء إعلاني مستقر وجيد' : metrics.score > 45 ? 'أداء متوسط مع وجود هدر قابل للإصلاح' : 'هدر إعلاني مرتفع يستلزم تدخلاً فورياً'}
+                <input 
+                  type="range" 
+                  min="0.8" 
+                  max="6.0" 
+                  step="0.1"
+                  value={currentRoas} 
+                  onChange={(e) => setCurrentRoas(Number(e.target.value))}
+                  className="w-full h-2 bg-[#1b0c47] rounded-lg appearance-none cursor-pointer accent-[#8551ef]"
+                />
+              </div>
+
+              {/* Toggles */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setHasPixel(!hasPixel)}
+                  className={`p-3 rounded-2xl border text-xs font-bold flex items-center justify-between transition-all ${
+                    hasPixel 
+                      ? 'bg-[#ce23bd]/15 border-[#ce23bd] text-white' 
+                      : 'bg-[#10072b]/50 border-slate-800 text-slate-400'
+                  }`}
+                >
+                  <span>بكسل التتبع مربوط</span>
+                  <CheckCircle2 className={`w-4 h-4 ${hasPixel ? 'text-[#ce23bd]' : 'text-slate-600'}`} />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setHasSeo(!hasSeo)}
+                  className={`p-3 rounded-2xl border text-xs font-bold flex items-center justify-between transition-all ${
+                    hasSeo 
+                      ? 'bg-[#8551ef]/15 border-[#8551ef] text-white' 
+                      : 'bg-[#10072b]/50 border-slate-800 text-slate-400'
+                  }`}
+                >
+                  <span>استراتيجية SEO مفعلة</span>
+                  <CheckCircle2 className={`w-4 h-4 ${hasSeo ? 'text-[#8551ef]' : 'text-slate-600'}`} />
+                </button>
+              </div>
+
+              {/* Consultation Lead Gate Form */}
+              <form onSubmit={handleAuditSubmit} className="pt-4 border-t border-[#8551ef]/20 space-y-3">
+                <div className="text-xs font-bold text-slate-300">
+                  احصل على التقرير التشخيصي الكامل وخطة خفض الهدر مجاناً:
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <input
+                    type="text"
+                    required
+                    placeholder="اسمك الكريم / المتجر"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="px-4 py-2.5 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ce23bd]"
+                  />
+                  <input
+                    type="tel"
+                    required
+                    placeholder="رقم الجوال (05xxxxxxxx)"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="px-4 py-2.5 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 font-mono text-left focus:outline-none focus:border-[#ce23bd]"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="btn-via-primary w-full py-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>{loading ? 'جاري التحليل بالذكاء الاصطناعي...' : 'تحليل الأداء وإرسال التقرير'}</span>
+                </button>
+              </form>
+            </div>
+
+            {/* Results Live Gauge Column */}
+            <div className="lg:col-span-5 bg-[#0e0428]/80 p-6 rounded-3xl border border-[#ce23bd]/30 text-center space-y-5">
+              <div className="text-xs text-slate-400 font-bold">مؤشر كفاءة التسويق الذكي</div>
+              
+              {/* Score Display */}
+              <div className="relative inline-flex items-center justify-center">
+                <div className="w-36 h-36 rounded-full border-4 border-[#ce23bd]/30 flex flex-col items-center justify-center bg-gradient-to-tr from-[#09001f] to-[#1d0947] shadow-[0_0_35px_rgba(206,35,189,0.3)]">
+                  <span className="text-4xl font-black text-white font-mono">{metrics.score}</span>
+                  <span className="text-[10px] text-slate-400 font-bold">من 100</span>
                 </div>
               </div>
 
-              {/* Highlights */}
-              <div className="space-y-3 mb-6">
-                <div className="bg-slate-900/80 p-3.5 rounded-2xl border border-rose-500/20 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
-                    <AlertTriangle className="w-4 h-4 text-rose-400" />
-                    <span>الهدر الشهري التقديري:</span>
+              {/* Waste & Potential Metrics */}
+              <div className="grid grid-cols-2 gap-3 text-right">
+                <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/25">
+                  <div className="text-[10px] text-rose-400 font-bold flex items-center gap-1">
+                    <AlertTriangle className="w-3 h-3" />
+                    <span>الهدر التقديري:</span>
                   </div>
-                  <div className="text-sm font-black font-mono text-rose-400">
-                    -{metrics.waste.toLocaleString('ar-SA')} ر.س
+                  <div className="text-base font-black text-rose-300 font-mono mt-1">
+                    {metrics.waste.toLocaleString('ar-SA')} ر.س
                   </div>
                 </div>
 
-                <div className="bg-slate-900/80 p-3.5 rounded-2xl border border-emerald-500/20 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
-                    <TrendingUp className="w-4 h-4 text-emerald-400" />
-                    <span>فرصة نمو المبيعات (مع فيا):</span>
+                <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/25">
+                  <div className="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
+                    <TrendingUp className="w-3 h-3" />
+                    <span>فرصة نمو المبيعات:</span>
                   </div>
-                  <div className="text-sm font-black font-mono text-emerald-400">
+                  <div className="text-base font-black text-emerald-300 font-mono mt-1">
                     +{metrics.growth}%
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Bottom CTA */}
-            <div>
-              <button
-                type="button"
-                onClick={handleOpenLeadGate}
-                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-cyan-400 to-cyan-200 hover:from-cyan-300 hover:to-white text-slate-950 font-black text-xs shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-4 h-4 text-slate-950" />
-                <span>احصل على خطة العلاج والتقرير الكامل مجاناً</span>
-              </button>
-              <div className="text-[10px] text-center text-slate-400 mt-2">
-                🔒 فحص استشاري مباشر عبر واتساب بدون أي التزام مالي
-              </div>
+              {submittedAudit && (
+                <div className="p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-xs text-emerald-300 font-bold">
+                  ✓ تم تسجيل طلبك وحفظ التحليل في قاعدة البيانات بنجاح!
+                </div>
+              )}
             </div>
 
           </div>
-
         </div>
 
       </div>
-
-      {/* Lead Capture Modal */}
-      {showLeadModal && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="glass-panel w-full max-w-md p-6 sm:p-8 rounded-3xl border border-cyan-500/40 shadow-2xl relative">
-            <button
-              onClick={() => setShowLeadModal(false)}
-              className="absolute top-4 left-4 text-slate-400 hover:text-white text-sm font-bold"
-            >
-              ✕
-            </button>
-
-            {!submittedAudit ? (
-              <form onSubmit={handleSubmitAudit} className="space-y-4">
-                <div className="text-center mb-4">
-                  <div className="w-10 h-10 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center mx-auto mb-2 border border-cyan-500/30">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-lg font-black font-cairo text-white">إرسال التقرير التحليلي المخصص</h3>
-                  <p className="text-xs text-slate-400">
-                    أدخل رقم هاتفك لنرسل لك تفاصيل الخطة التسويقية وتقرير الهدر الإعلاني مباشرة:
-                  </p>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-300 mb-1">الاسم أو اسم المتجر:</label>
-                  <input
-                    type="text"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="مثال: متجر أصايل"
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-300 mb-1">رقم الجوال / الواتساب (سعودي):</label>
-                  <input
-                    type="tel"
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="05XXXXXXXX أو 9665XXXXXXXX"
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-mono"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-300 mb-1">البريد الإلكتروني (اختياري):</label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="info@yourdomain.com"
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-mono"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-black text-xs shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2"
-                >
-                  {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
-                  <span>إرسال التقرير وفتح محادثة الواتساب</span>
-                </button>
-              </form>
-            ) : (
-              <div className="text-center py-4 space-y-4">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
-                  <CheckCircle className="w-6 h-6" />
-                </div>
-                <h4 className="text-lg font-black font-cairo text-white">تم تحليل نشاطك التسويقي بنجاح!</h4>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  {submittedAudit.diagnostic_summary}
-                </p>
-
-                <div className="pt-2">
-                  <a
-                    href={`https://api.whatsapp.com/send/?phone=966569623131&text=مرحباً%20فيا%20(VIA%20AI)،%20أجريت%20فحص%20المتجر%20(${encodeURIComponent(storeUrl || 'متجري')})%20بميزانية%20${monthlySpend}%20ر.س%20وحصلت%20على%20تقييم%20${submittedAudit.score}%20مع%20هدر%20تقديري%20${submittedAudit.estimated_ad_waste}%20ر.س.%20أرغب%20في%20مناقشة%20خطة%20العلاج.&type=phone_number&app_absent=0`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>متابعة الخطة مع خبير فيا على الواتساب</span>
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </section>
   );
 }
-

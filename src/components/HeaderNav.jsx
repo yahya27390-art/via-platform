@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Phone, MessageCircle, Menu, X, ArrowLeft } from 'lucide-react';
+import { Menu, X, Sparkles, MessageCircle, ArrowLeft } from 'lucide-react';
 
 export default function HeaderNav() {
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -15,121 +15,119 @@ export default function HeaderNav() {
 
   const navLinks = [
     { name: 'الرئيسية', href: '#hero' },
-    { name: 'مقياس الأداء الذكي', href: '#performance-meter' },
     { name: 'خدماتنا', href: '#services' },
-    { name: 'رحلتك معنا', href: '#journey' },
-    { name: 'قصص النجاح', href: '#case-studies' },
+    { name: 'مقياس الأداء', href: '#performance-meter' },
+    { name: 'أعمالنا', href: '#works' },
+    { name: 'رحلتك مع فيا', href: '#journey' },
+    { name: 'قصص النجاح', href: '#testimonials' },
     { name: 'الأسئلة الشائعة', href: '#faq' },
-    { name: 'تواصل معنا', href: '#contact' }
   ];
 
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=966569623131&text=السلام%20عليكم،%20أرغب%20في%20استشارة%20تسويقية%20مع%20فيا%20(VIA%20AI)&type=phone_number&app_absent=0";
-
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-slate-950/85 backdrop-blur-xl border-b border-slate-800/80 py-3 shadow-2xl shadow-cyan-950/20' 
-        : 'bg-transparent py-5'
-    }`}>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-[#09001f]/85 backdrop-blur-xl border-b border-[#8551ef]/20 shadow-[0_10px_30px_rgba(9,0,31,0.8)] py-3' 
+          : 'bg-transparent py-5'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:shadow-cyan-400/50 transition-all">
-              <Sparkles className="w-5 h-5 text-white animate-pulse-slow" />
+          <a href="#hero" className="flex items-center gap-3 group">
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#ce23bd] to-[#8551ef] rounded-xl blur-sm opacity-70 group-hover:opacity-100 transition duration-300" />
+              <img 
+                src="./media/logo.png" 
+                alt="VIA AI" 
+                className="relative h-10 w-auto rounded-lg object-contain bg-[#09001f] p-1 border border-[#ce23bd]/30"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="hidden h-10 w-10 rounded-lg bg-gradient-to-tr from-[#ce23bd] to-[#8551ef] items-center justify-center font-black text-white text-lg">
+                V
+              </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-black font-cairo tracking-wide text-white flex items-center gap-1.5">
-                فيا <span className="text-xs px-1.5 py-0.5 rounded-md bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 font-mono">VIA AI</span>
+              <span className="font-heading font-black text-xl tracking-tight text-white group-hover:text-[#ce23bd] transition-colors">
+                فيا <span className="text-xs px-2 py-0.5 rounded-full bg-[#ce23bd]/20 text-[#ce23bd] border border-[#ce23bd]/30">AI</span>
               </span>
-              <span className="text-[10px] text-slate-400 font-medium -mt-0.5">التسويق الرقمي بالذكاء الاصطناعي</span>
+              <span className="text-[10px] text-slate-400 font-medium">تسويق رقمي بالذكاء الاصطناعي</span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-2xl border border-slate-800/80 backdrop-blur-md">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 px-4 py-1.5 rounded-full bg-[#10072b]/80 border border-[#8551ef]/20 backdrop-blur-md">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800/70 transition-all duration-200"
+                className="px-3 py-1.5 rounded-full text-xs font-bold text-slate-300 hover:text-white hover:bg-[#ce23bd]/15 hover:border-[#ce23bd]/30 border border-transparent transition-all duration-200"
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          {/* Action CTAs */}
+          {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-3">
             <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 px-3 py-2 rounded-xl border border-emerald-500/30 transition-all"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>واتساب مباشر</span>
-            </a>
-
-            <a
               href="#contact"
-              className="flex items-center gap-1.5 text-xs font-black text-slate-950 bg-gradient-to-r from-cyan-400 to-cyan-200 hover:from-cyan-300 hover:to-white px-4 py-2.5 rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/30 transition-all transform hover:-translate-y-0.5"
+              className="btn-via-primary px-5 py-2.5 rounded-full text-xs font-bold text-white flex items-center gap-2 group"
             >
               <span>احجز استشارتك المجانية</span>
-              <ArrowLeft className="w-3.5 h-3.5" />
+              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl bg-slate-900 text-slate-300 hover:text-white border border-slate-800 focus:outline-none"
-            aria-label="القائمة"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex lg:hidden items-center gap-2">
+            <a
+              href="#contact"
+              className="btn-via-primary px-3 py-1.5 rounded-full text-[11px] font-bold text-white"
+            >
+              استشارة
+            </a>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-xl bg-[#10072b] border border-[#8551ef]/30 text-slate-300 hover:text-white"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950/95 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 backdrop-blur-2xl">
-          <div className="flex flex-col space-y-1">
+        <div className="lg:hidden mt-3 px-4 pt-2 pb-6 bg-[#0c003a]/95 backdrop-blur-2xl border-b border-[#8551ef]/30">
+          <div className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2.5 rounded-xl text-sm font-bold text-slate-200 hover:text-cyan-400 hover:bg-slate-900/60 transition-all"
+                className="px-4 py-2.5 rounded-xl text-sm font-bold text-slate-200 hover:bg-[#ce23bd]/15 hover:text-[#ce23bd] transition-colors"
               >
                 {link.name}
               </a>
             ))}
-          </div>
-
-          <div className="pt-3 border-t border-slate-800/80 flex flex-col gap-2.5">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 text-xs font-bold text-emerald-400 bg-emerald-500/10 py-3 rounded-xl border border-emerald-500/30"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>تواصل واتساب مع مختص</span>
-            </a>
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 text-xs font-black text-slate-950 bg-cyan-400 py-3 rounded-xl"
-            >
-              <span>احجز استشارتك المجانية</span>
-              <ArrowLeft className="w-4 h-4" />
-            </a>
+            <div className="pt-3 mt-2 border-t border-[#8551ef]/20 flex flex-col gap-2">
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="btn-via-primary w-full py-3 rounded-xl text-center text-xs font-bold text-white"
+              >
+                احجز استشارتك المجانية
+              </a>
+            </div>
           </div>
         </div>
       )}
     </header>
   );
 }
-

@@ -1,102 +1,131 @@
 import React from 'react';
-import { Compass, Target, Rocket, Award, ArrowLeft } from 'lucide-react';
+import { Rocket, Target, Cpu, Crown, ArrowLeft, Sparkles, CheckCircle2 } from 'lucide-react';
+
+const STEPS = [
+  {
+    step: '01',
+    title: 'نقطة الانطلاق ورسم المسار',
+    desc: 'نبدأ بجلسة تشخيص معمقة وفهم نموذج عملك وتحليل السوق والمنافسين بالذكاء الاصطناعي لاكتشاف فرص الربح المهدرة.',
+    icon: Rocket,
+    color: 'text-[#ce23bd]'
+  },
+  {
+    step: '02',
+    title: 'بناء الاستراتيجية الذكية',
+    desc: 'نضع خارطة طريق مخصصة تجمع بين المحتوى الإبداعي، الاستهداف الخوارزمي الدقيق، وسيو محركات البحث والـ AI.',
+    icon: Target,
+    color: 'text-[#8551ef]'
+  },
+  {
+    step: '03',
+    title: 'التنفيذ والتحسين الخوارزمي',
+    desc: 'إطلاق الحملات وإدارة المنصات مع مراقبة وتحسين لحظي للنتائج لضمان توجيه كل ريال نحو الجمهور الأكثر استعداداً للشراء.',
+    icon: Cpu,
+    color: 'text-cyan-400'
+  },
+  {
+    step: '04',
+    title: 'معانقة القمة والنمو المستدام',
+    desc: 'تحقيق مبيعات متضاعفة ومعدل عائد قياسي (ROAS) وبناء حضور رقمي قوي يجعل علامتك التجارية الخيار الأول دائماً.',
+    icon: Crown,
+    color: 'text-amber-400'
+  }
+];
 
 export default function JourneyTimeline() {
-  const steps = [
-    {
-      num: '01',
-      title: 'الفحص والتشخيص التقني الشامل',
-      desc: 'قبل إنفاق أي ريال على الإعلانات، نصلح المشاكل التقنية في موقعك وسلات الشراء المتروكة، ونهيئ التتبع الذكي (CAPI/Pixel).',
-      icon: Compass,
-      color: 'from-cyan-500 to-blue-500'
-    },
-    {
-      num: '02',
-      title: 'بناء الاستراتيجية وتحديد الجمهور',
-      desc: 'تحليل سلوك العملاء والمنافسين باستخدام الذكاء الاصطناعي لاختيار القنوات الأعلى عائداً (Google, TikTok, Snapchat) وصياغة العروض.',
-      icon: Target,
-      color: 'from-blue-500 to-indigo-500'
-    },
-    {
-      num: '03',
-      title: 'صناعة المحتوى وإطلاق الحملات',
-      desc: 'إنتاج تصاميم وفيديوهات إعلانية جذابة تخاطب رغبة العميل وتحفز قرار الشراء الفوري، مع إطلاق حملات البحث والإعلانات الممولة.',
-      icon: Rocket,
-      color: 'from-indigo-500 to-purple-500'
-    },
-    {
-      num: '04',
-      title: 'التحسين المستمر ومضاعفة الأرباح',
-      desc: 'مراقبة يومية للعائد الإعلاني (ROAS)، وإيقاف الإعلانات غير المجدية وتكبير الحملات الرابحة لنصل بعلامتك التجارية إلى القمة.',
-      icon: Award,
-      color: 'from-purple-500 to-emerald-500'
-    }
-  ];
-
   return (
-    <section id="journey" className="py-20 relative bg-slate-950/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="journey" className="py-24 relative overflow-hidden">
+      
+      {/* Background Nebula */}
+      <div className="absolute top-1/2 left-10 w-[550px] h-[550px] bg-[#8551ef]/15 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
+        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-4">
-            <span>منهجية العمل الواضحة</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#160a38] border border-[#ce23bd]/40 shadow-[0_0_20px_rgba(206,35,189,0.25)] text-[#ce23bd] text-xs font-bold mb-4">
+            <Sparkles className="w-4 h-4" />
+            <span>رحلتك مع فيا</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black font-cairo text-white mb-4">
-            رحلتك مع فيا: من الإقلاع إلى القمة...
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+            من الإقلاع إلى <span className="gradient-text-via">القمة...</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
-            نبدأ معك من نقطة الانطلاق لرسم المسار، وننقلك بخطى واثقة نحو نتائج ملموسة ونمو حقيقي لنحول رؤيتك إلى إنجاز رقمي متكامل.
+
+          <p className="mt-4 text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            نبدأ معك من نقطة الانطلاق، لرسم المسار، وننقلك بخطى واثقة نحو نتائج ملموسة ونمو حقيقي لنحول رؤيتك إلى إنجاز رقمي متكامل حتى تعانق علامتك القمة.
           </p>
         </div>
 
-        {/* 4 Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {steps.map((st, i) => {
-            const Icon = st.icon;
-            return (
-              <div
-                key={st.num}
-                className="glass-panel p-6 rounded-3xl border border-slate-800 relative group glass-panel-hover flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-2xl font-black font-mono text-slate-600 group-hover:text-cyan-400 transition-colors">
-                      {st.num}
-                    </span>
-                    <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${st.color} flex items-center justify-center text-white shadow-lg`}>
-                      <Icon className="w-6 h-6" />
-                    </div>
+        {/* Content Layout: 4 Steps on Right + Second 3D Robot on Left */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Steps Column (7 cols) */}
+          <div className="lg:col-span-7 space-y-5">
+            {STEPS.map((s, idx) => {
+              const Icon = s.icon;
+              return (
+                <div
+                  key={s.step}
+                  className="via-card p-6 rounded-3xl flex items-start gap-5 relative group overflow-hidden"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-[#160a38] border border-[#8551ef]/30 flex items-center justify-center shrink-0 shadow-[0_5px_15px_rgba(9,0,31,0.6)] group-hover:scale-110 transition-transform">
+                    <Icon className={`w-7 h-7 ${s.color}`} />
                   </div>
 
-                  <h3 className="text-base font-black font-cairo text-white mb-2.5">
-                    {st.title}
-                  </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed font-normal">
-                    {st.desc}
-                  </p>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-xs font-black px-2 py-0.5 rounded-md bg-[#ce23bd]/15 text-[#ce23bd]">
+                        المرحلة {s.step}
+                      </span>
+                      <h3 className="text-lg font-bold text-white group-hover:text-[#ce23bd] transition-colors">
+                        {s.title}
+                      </h3>
+                    </div>
+                    <p className="text-xs text-slate-300 leading-relaxed pt-1">
+                      {s.desc}
+                    </p>
+                  </div>
                 </div>
+              );
+            })}
 
-                <div className="mt-6 pt-3 border-t border-slate-800/80 flex items-center text-[11px] font-bold text-cyan-400">
-                  <span>خطوة معتمدة بالذكاء الاصطناعي</span>
-                </div>
+            <div className="pt-4 text-center sm:text-right">
+              <a
+                href="#contact"
+                className="btn-via-primary inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-xs font-black text-white"
+              >
+                <span>ابدأ رحلتك التسويقية الآن</span>
+                <ArrowLeft className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* Left Column: Authentic Second Robot (Robot-1.webp) */}
+          <div className="lg:col-span-5 relative flex items-center justify-center">
+            
+            {/* Glowing Rings behind Robot 2 */}
+            <div className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-tr from-[#8551ef]/30 via-[#ce23bd]/20 to-transparent blur-3xl animate-pulse" />
+            
+            <div className="relative z-10 max-w-[400px] w-full flex justify-center">
+              <img
+                src="./media/Robot-1.webp"
+                alt="VIA AI Robot Guide"
+                className="robo-avatar-secondary w-full h-auto max-h-[500px] object-contain select-none pointer-events-none"
+              />
+
+              {/* Floating Badge */}
+              <div className="badge-float absolute bottom-6 right-2 px-4 py-2 rounded-2xl bg-[#120738]/95 border border-[#ce23bd]/50 backdrop-blur-xl shadow-[0_10px_25px_rgba(206,35,189,0.3)]">
+                <div className="text-[10px] text-slate-400">مرافقة مستمرة</div>
+                <div className="text-xs font-black text-white">من البداية حتى القمة ⚡</div>
               </div>
-            );
-          })}
-        </div>
+            </div>
 
-        {/* Bottom Banner */}
-        <div className="mt-12 text-center">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 text-xs font-black text-cyan-300 hover:text-white bg-slate-900/90 border border-cyan-500/30 px-6 py-3 rounded-2xl shadow-lg hover:border-cyan-400 transition-all"
-          >
-            <span>هل أنت جاهز لبدء رحلة النمو معنا؟ احجز استشارتك الآن</span>
-            <ArrowLeft className="w-4 h-4 text-cyan-400" />
-          </a>
+          </div>
+
         </div>
 
       </div>
     </section>
   );
 }
-

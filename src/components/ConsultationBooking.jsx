@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MessageCircle, Send, CheckCircle2, Clock, Calendar, FileText, Loader2 } from 'lucide-react';
+import { MessageCircle, Send, CheckCircle2, Phone, Mail, Clock, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function ConsultationBooking() {
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [service, setService] = useState('general');
+  const [service, setService] = useState('ads');
   const [details, setDetails] = useState('');
-  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!phone || phone.trim().length < 8) {
-      alert('يرجى كتابة رقم الجوال للتواصل.');
-      return;
-    }
+    if (!fullName || !phone) return;
 
     setLoading(true);
     try {
@@ -28,13 +25,11 @@ export default function ConsultationBooking() {
           email,
           service_interest: service,
           project_details: details,
-          source_channel: 'consultation_section'
+          source_channel: 'website_contact'
         })
       });
       setSubmitted(true);
     } catch (err) {
-      console.error(err);
-      // Still show success to not block user
       setSubmitted(true);
     } finally {
       setLoading(false);
@@ -42,234 +37,194 @@ export default function ConsultationBooking() {
   };
 
   return (
-    <section id="contact" className="py-20 relative bg-slate-950/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 relative overflow-hidden bg-[#070017]">
+      
+      {/* Background Glows */}
+      <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-[#ce23bd]/20 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#160a38] border border-[#ce23bd]/40 shadow-[0_0_20px_rgba(206,35,189,0.25)] text-[#ce23bd] text-xs font-bold mb-4">
             <MessageCircle className="w-4 h-4" />
-            <span>ابدأ رحلة النجاح مع مستشارينا</span>
+            <span>ابدأ رحلة النمو اليوم</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black font-cairo text-white mb-4">
-            تحدث مع خبير تسويقي الآن | احجز استشارتك المجانية
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+            تحدث مع <span className="gradient-text-via">خبير تسويقي الآن</span>
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
-            يسعدنا الرد على أي استفسار لديك، ومساعدتك في اختيار الخدمة الأنسب لاحتياجات متجرك لتحقيق أقصى ربحية ممكنة.
+
+          <p className="mt-4 text-base text-slate-300 leading-relaxed max-w-xl mx-auto">
+            احجز استشارتك التسويقية المجانية لمناقشة أهدافك وبناء خطة نجاح مخصصة تحقق أعلى عائد استثماري لعلامتك التجارية.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Form and Contact Info Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
-          {/* Left Column: Direct Info & Process Steps (5 Cols) */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            {/* Quick Contact Card */}
-            <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
-              <h3 className="text-base font-black font-cairo text-white">
-                قنوات التواصل المباشر
-              </h3>
-              
-              <div className="space-y-3">
-                <a
-                  href="https://api.whatsapp.com/send/?phone=966569623131&text=مرحباً%20فيا،%20أرغب%20في%20استشارة%20تسويقية%20لمشروعي.&type=phone_number&app_absent=0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-emerald-500/30 text-slate-200 transition-all group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
-                    <MessageCircle className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">محادثة واتساب فورية</div>
-                    <div className="text-[11px] text-emerald-400 font-mono">+966 56 962 3131</div>
-                  </div>
-                </a>
+          {/* Right Column: Contact Highlights & GIF (5 cols) */}
+          <div className="lg:col-span-5 via-card p-8 rounded-3xl flex flex-col justify-between border border-[#8551ef]/30">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#ce23bd]/15 border border-[#ce23bd]/30 flex items-center justify-center text-[#ce23bd] mb-6">
+                <Sparkles className="w-6 h-6" />
+              </div>
 
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5" />
+              <h3 className="text-2xl font-black text-white mb-3">
+                جلسة استراتيجية مجانية 100%
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-8">
+                خلال الجلسة سنقوم بتحليل متجرك أو موقعك، فحص قنوات إعلاناتك، وتقديم توصيات واضحة ومباشرة لرفع المبيعات وخفض الهدر الإعلاني.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-xs text-slate-200">
+                  <div className="w-8 h-8 rounded-lg bg-[#160a38] flex items-center justify-center text-[#ce23bd]">
+                    <Clock className="w-4 h-4" />
                   </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">الهاتف الموحد</div>
-                    <div className="text-[11px] text-cyan-400 font-mono">+966 11 507 8066</div>
-                  </div>
+                  <span>الرد والتواصل خلال أقل من ساعتين عمل</span>
                 </div>
 
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200">
-                  <div className="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5" />
+                <div className="flex items-center gap-3 text-xs text-slate-200">
+                  <div className="w-8 h-8 rounded-lg bg-[#160a38] flex items-center justify-center text-[#8551ef]">
+                    <ShieldCheck className="w-4 h-4" />
                   </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">البريد الإلكتروني المعتمد</div>
-                    <div className="text-[11px] text-slate-400 font-mono">contact@via-ai.co</div>
+                  <span>سرية تامة لبيانات متجرك وأرقامك التسويقية</span>
+                </div>
+
+                <div className="flex items-center gap-3 text-xs text-slate-200">
+                  <div className="w-8 h-8 rounded-lg bg-[#160a38] flex items-center justify-center text-emerald-400">
+                    <CheckCircle2 className="w-4 h-4" />
                   </div>
+                  <span>بدون أي التزام مالي أو شروط مسبقة</span>
                 </div>
               </div>
             </div>
 
-            {/* What happens after contacting */}
-            <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
-              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                ماذا يحدث بعد إرسال طلبك؟
-              </h4>
-
-              <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    1
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">جدولة مكالمة هاتفية</div>
-                    <div className="text-[11px] text-slate-400">نتواصل معك في الوقت الأنسب لك لمناقشة أهدافك.</div>
-                  </div>
+            {/* Direct Contact Links */}
+            <div className="pt-8 border-t border-[#8551ef]/20 mt-8 space-y-3">
+              <a 
+                href="https://wa.me/966569623131" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-3 text-xs font-bold text-slate-300 hover:text-emerald-400 transition-colors"
+              >
+                <div className="w-7 h-7 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400">
+                  <Phone className="w-3.5 h-3.5" />
                 </div>
+                <span>واتساب مباشر: +966 56 962 3131</span>
+              </a>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    2
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">جلسة استكشافية وتحليل تقني</div>
-                    <div className="text-[11px] text-slate-400">نعقد جلسة استشارية لفحص المتجر وتحديد مكامن القوة والخلل.</div>
-                  </div>
+              <a 
+                href="mailto:contact@via-ai.co"
+                className="flex items-center gap-3 text-xs font-bold text-slate-300 hover:text-[#ce23bd] transition-colors"
+              >
+                <div className="w-7 h-7 rounded-lg bg-[#ce23bd]/15 flex items-center justify-center text-[#ce23bd]">
+                  <Mail className="w-3.5 h-3.5" />
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                    3
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">إعداد العرض والخطة المخصصة</div>
-                    <div className="text-[11px] text-slate-400">نقدم لك خطة واضحة بالأرقام والعائد المتوقع لمشروعك.</div>
-                  </div>
-                </div>
-              </div>
+                <span>البريد الإلكتروني: contact@via-ai.co</span>
+              </a>
             </div>
 
           </div>
 
-          {/* Right Column: Interactive Consultation Form (7 Cols) */}
-          <div className="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/30">
-            {!submitted ? (
-              <form onSubmit={handleSubmit} className="space-y-5 text-right">
-                <h3 className="text-base sm:text-lg font-black font-cairo text-white border-b border-slate-800 pb-3">
-                  نموذج طلب الاستشارة التسويقية المجانية
-                </h3>
-
+          {/* Left Column: Form (7 cols) */}
+          <div className="lg:col-span-7 via-card p-8 sm:p-10 rounded-3xl border border-[#ce23bd]/30">
+            {submitted ? (
+              <div className="py-16 text-center space-y-4">
+                <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-black text-white">تم استلام طلبك بنجاح!</h3>
+                <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                  شكراً لثقتك في فيا (VIA AI). سيقوم أحد مستشارينا التسويقيين بالتواصل معك عبر الواتساب أو الهاتف خلال وقت قصير جداً.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="btn-via-outline px-6 py-2.5 rounded-xl text-xs font-bold text-white mt-4"
+                >
+                  إرسال استفسار آخر
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-300 mb-1.5">الاسم الكريم:</label>
+                  <div className="space-y-1.5 text-right">
+                    <label className="text-xs font-bold text-slate-300">الاسم بالكامل / اسم النشاط: *</label>
                     <input
                       type="text"
                       required
+                      placeholder="مثال: متجر أصايل للعطور"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      placeholder="اسمك الكريم"
-                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ce23bd]"
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-slate-300 mb-1.5">رقم الجوال / الواتساب:</label>
+                  <div className="space-y-1.5 text-right">
+                    <label className="text-xs font-bold text-slate-300">رقم الجوال (واتساب): *</label>
                     <input
                       type="tel"
                       required
+                      placeholder="05xxxxxxxx"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="05XXXXXXXX أو +9665XXXXXXXX"
-                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-mono"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 font-mono text-left focus:outline-none focus:border-[#ce23bd]"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-300 mb-1.5">البريد الإلكتروني:</label>
+                  <div className="space-y-1.5 text-right">
+                    <label className="text-xs font-bold text-slate-300">البريد الإلكتروني:</label>
                     <input
                       type="email"
+                      placeholder="info@yourdomain.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="name@business.com"
-                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 font-mono"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 font-mono text-left focus:outline-none focus:border-[#ce23bd]"
                     />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-slate-300 mb-1.5">الخدمة المستهدفة:</label>
+                  <div className="space-y-1.5 text-right">
+                    <label className="text-xs font-bold text-slate-300">الخدمة المطلوبة:</label>
                     <select
                       value={service}
                       onChange={(e) => setService(e.target.value)}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-cyan-500"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white focus:outline-none focus:border-[#ce23bd]"
                     >
-                      <option value="general">استشارة تسويقية شاملة</option>
+                      <option value="ads">إدارة الحملات الإعلانية الممولة</option>
                       <option value="seo">تحسين محركات البحث وسيو الذكاء الاصطناعي</option>
-                      <option value="social">إدارة حسابات التواصل الاجتماعي</option>
-                      <option value="ads">الحملات الإعلانية الممولة والمتاجر</option>
-                      <option value="influencers">التسويق عبر المؤثرين</option>
-                      <option value="design">التصميم والهوية البصرية</option>
-                      <option value="motion">الموشن جرافيك والفيديو</option>
+                      <option value="ecommerce">حلول وتطوير المتاجر الإلكترونية</option>
+                      <option value="social">إدارة منصات التواصل الاجتماعي</option>
+                      <option value="design">التصميم والموشن جرافيك</option>
+                      <option value="full">استراتيجية تسويقية متكاملة</option>
                     </select>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-slate-300 mb-1.5">نبذة عن مشروعك أو استفسارك:</label>
+                <div className="space-y-1.5 text-right">
+                  <label className="text-xs font-bold text-slate-300">تفاصيل إضافية عن مشروعك أو التحديات الحالية:</label>
                   <textarea
                     rows={4}
+                    placeholder="حدثنا باختصار عن متجرك، ميزانيتك الإعلانية التقريبية، والهدف الذي تود تحقيقه معنا..."
                     value={details}
                     onChange={(e) => setDetails(e.target.value)}
-                    placeholder="رابط المتجر، الميزانية الشهرية المقترحة، وأبرز التحديات الحالية..."
-                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                    className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ce23bd]"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                  className="btn-via-primary w-full py-4 rounded-xl text-xs sm:text-sm font-black text-white flex items-center justify-center gap-2"
                 >
-                  {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
-                  <span>إرسال طلب الاستشارة وفحص المتجر الآن</span>
+                  <Send className="w-4 h-4" />
+                  <span>{loading ? 'جاري إرسال الطلب...' : 'احجز استشارتك المجانية الآن'}</span>
                 </button>
-                
-                <div className="text-[11px] text-center text-slate-400">
-                  🔒 بياناتك مشفرة ومحمية بخصوصية تامة، ولن يتم استخدامها إلا لمناقشة مشروعك.
-                </div>
               </form>
-            ) : (
-              <div className="text-center py-12 space-y-5">
-                <div className="w-16 h-16 rounded-3xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
-                  <CheckCircle2 className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-black font-cairo text-white">تم استلام طلبك بنجاح!</h3>
-                <p className="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
-                  شكراً لثقتك في فيا (VIA AI). تم تسجيل طلب استشارتك بنجاح وسيقوم أحد خبرائنا بمراجعة متجرك والتواصل معك عبر الواتساب في غضون ساعتين عمل.
-                </p>
-
-                <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
-                  <a
-                    href={`https://api.whatsapp.com/send/?phone=966569623131&text=السلام%20عليكم،%20أرسلت%20طلب%20استشارة%20باسم%20(${encodeURIComponent(fullName || 'عميل')})%20بخصوص%20${encodeURIComponent(service)}.%20أرغب%20في%20بدء%20المحادثة%20مباشرة.&type=phone_number&app_absent=0`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs flex items-center justify-center gap-2"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>تحدث مع الخبير عبر واتساب الآن</span>
-                  </a>
-                  <button
-                    onClick={() => {
-                      setSubmitted(false);
-                      setFullName('');
-                      setPhone('');
-                      setDetails('');
-                    }}
-                    className="px-5 py-3 rounded-xl bg-slate-900 text-slate-300 text-xs font-bold border border-slate-800"
-                  >
-                    إرسال طلب آخر
-                  </button>
-                </div>
-              </div>
             )}
           </div>
 
@@ -279,4 +234,3 @@ export default function ConsultationBooking() {
     </section>
   );
 }
-

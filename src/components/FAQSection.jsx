@@ -1,85 +1,85 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, Sparkles } from 'lucide-react';
 
-const DEFAULT_FAQS = [
+const FAQS = [
   {
     id: 'faq_1',
-    question_ar: 'ما الذي يميز فيا (VIA) عن شركات التسويق التقليدية؟',
-    answer_ar: 'ما يميز فيا هو دمج تقنيات الذكاء الاصطناعي المتقدمة مع الخبرة الاستراتيجية. نحن لا نطلق إعلانات عشوائية، بل نبدأ بإصلاح المشاكل التقنية في موقعك وتحليل سلوك العملاء لضمان أن كل ريال يُنفق يحقق عائداً ملموساً.'
+    question: 'ما الذي يميز VIA عن شركات التسويق الإلكتروني التقليدي؟',
+    answer: 'تتميز VIA بدمج تقنيات الذكاء الاصطناعي مع الخبرة التسويقية العميقة. لا نركز فقط على الظهور التقليدي، بل نساعد علامتك التجارية على الاستعداد لعصر البحث بالذكاء الاصطناعي والظهور الموصى به في أدوات مثل ChatGPT و Gemini و Perplexity، وبناء استراتيجيات مخصصة ترفع المبيعات الفعلية.'
   },
   {
     id: 'faq_2',
-    question_ar: 'كيف تساعدني فيا في الظهور في محركات الذكاء الاصطناعي (مثل ChatGPT)؟',
-    answer_ar: 'نطبق تقنيات GEO (Generative Engine Optimization) لتحسين المحتوى والبيانات المنظمة للعلامة التجارية بحيث تعتمدها نماذج الذكاء الاصطناعي كمصدر موثوق وترشح خدماتك للمستخدمين عند سؤالهم عن مجالك.'
+    question: 'ما هي الخدمات التي تقدمها فيا؟',
+    answer: 'نقدم حلولاً متكاملة تشمل: تحسين محركات البحث (SEO وسيو الذكاء الاصطناعي)، إدارة الحملات الإعلانية الممولة الموجهة (Snapchat, TikTok, Meta, Google)، إدارة منصات التواصل الاجتماعي، التصميم والتصوير الجرافيكي الاحترافي، فيديوهات الموشن جرافيك، وتطوير حلول المتاجر الإلكترونية (سلة، زد، وشوبيفاي).'
   },
   {
     id: 'faq_3',
-    question_ar: 'كم تبلغ أسعار باقات التسويق لديكم؟',
-    answer_ar: 'تختلف تكلفة الباقات وفقاً لاحتياج كل مشروع وأهدافه التسويقية وحجم المنافسة في قطاعه. نحن لا نقدم قوالب جاهزة للجميع، بل نقدم خطة مخصصة وعادلة تضمن أفضل عائد على استثمارك بعد الجلسة الاستشارية الأولى.'
+    question: 'كيف يتم تسعير الباقات الشهرية؟',
+    answer: 'تختلف قيمة الباقات حسب أهداف مشروعك، الخدمات المطلوبة، وحجم الاستراتيجية المناسبة لعلامتك التجارية. في VIA لا نقدم حلولاً معلبة للجميع، بل نبدأ بتحليل وضع مشروعك ونشاطك التسويقي لتحديد الخطة التي تضمن أفضل عائد استثماري (ROI) ونمو ممكن.'
   },
   {
     id: 'faq_4',
-    question_ar: 'ما هي المدة المتوقعة لرؤية نتائج ملموسة؟',
-    answer_ar: 'الحملات الإعلانية الممولة تبدأ في إعطاء نتائج ومؤشرات أولية خلال أول 7 إلى 14 يوماً مع استمرار التحسين، بينما استراتيجيات الـ SEO وصناعة المجتمع تستغرق من 30 إلى 90 يوماً لبناء نمو مستدام ومستقر.'
+    question: 'لماذا يعد الذكاء الاصطناعي مهماً للتسويق الرقمي اليوم؟',
+    answer: 'لأن الذكاء الاصطناعي يساعد على تحليل سلوك الجمهور والبيانات التسويقية بدقة وسرعة فائقة، واكتشاف فرص الهدر الإعلاني فوراً، مما يوفر الوقت والميزانيات ويمنح علامتك التجارية ميزة تنافسية كاسحة في السوق.'
   }
 ];
 
 export default function FAQSection() {
-  const [faqs, setFaqs] = useState(DEFAULT_FAQS);
   const [openId, setOpenId] = useState('faq_1');
-
-  useEffect(() => {
-    fetch('/api/faqs')
-      .then(res => res.json())
-      .then(data => {
-        if (data.success && data.data?.length > 0) setFaqs(data.data);
-      })
-      .catch(() => {});
-  }, []);
 
   const toggle = (id) => {
     setOpenId(openId === id ? null : id);
   };
 
   return (
-    <section id="faq" className="py-20 relative">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-24 relative overflow-hidden">
+      
+      {/* Background Accent */}
+      <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-[#8551ef]/15 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold mb-4">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#160a38] border border-[#ce23bd]/40 shadow-[0_0_20px_rgba(206,35,189,0.25)] text-[#ce23bd] text-xs font-bold mb-4">
             <HelpCircle className="w-4 h-4" />
-            <span>إجابات واضحة وشفافة</span>
+            <span>هل لديك استفسار؟</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black font-cairo text-white mb-4">
-            هل لديك استفسار؟ إجابات على أبرز الأسئلة
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
+            الأسئلة <span className="gradient-text-via">الشائعة</span>
           </h2>
-          <p className="text-sm text-slate-400">
-            كل ما تحتاج معرفته عن منهجية عمل فيا بالذكاء الاصطناعي وكيف نضمن تحقيق عائد على استثمارك.
+
+          <p className="mt-4 text-base text-slate-300 leading-relaxed max-w-xl mx-auto">
+            نسعد بالإجابة على استفساراتك ومناقشة أهدافك لوضع معاً خطة النجاح لعلامتك التجارية.
           </p>
         </div>
 
-        {/* FAQ List */}
-        <div className="space-y-3">
-          {faqs.map((f) => {
-            const isOpen = openId === f.id;
+        {/* Accordion List */}
+        <div className="space-y-4">
+          {FAQS.map((faq) => {
+            const isOpen = openId === faq.id;
             return (
               <div
-                key={f.id}
-                className="glass-panel rounded-2xl border border-slate-800/80 overflow-hidden transition-all duration-200"
+                key={faq.id}
+                className="via-card rounded-2xl overflow-hidden transition-all duration-300"
               >
                 <button
                   type="button"
-                  onClick={() => toggle(f.id)}
-                  className="w-full p-5 text-right flex items-center justify-between gap-4 font-bold text-xs sm:text-sm text-white hover:text-cyan-400 transition-colors"
+                  onClick={() => toggle(faq.id)}
+                  className="w-full p-5 sm:p-6 text-right flex items-center justify-between gap-4 select-none hover:bg-[#160a38]/40 transition-colors"
                 >
-                  <span className="font-cairo">{f.question_ar}</span>
-                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} />
+                  <span className="text-sm sm:text-base font-bold text-white">
+                    {faq.question}
+                  </span>
+                  <div className={`w-8 h-8 rounded-full bg-[#160a38] border border-[#ce23bd]/30 flex items-center justify-center shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[#ce23bd] text-white' : 'text-slate-400'}`}>
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs text-slate-300 leading-relaxed border-t border-slate-800/50 font-normal">
-                    {f.answer_ar}
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-[#8551ef]/15 font-normal">
+                    {faq.answer}
                   </div>
                 )}
               </div>
@@ -91,4 +91,3 @@ export default function FAQSection() {
     </section>
   );
 }
-

@@ -1,95 +1,124 @@
 import React from 'react';
-import { Sparkles, ArrowLeft, TrendingUp, ShieldCheck, Cpu, MessageSquare } from 'lucide-react';
+import { Sparkles, ArrowLeft, Bot, ShieldCheck, Zap, TrendingUp, BarChart3 } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      {/* Background Neon Mesh Gradients */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-600/20 via-indigo-600/20 to-purple-600/10 rounded-full blur-[130px] -z-10 pointer-events-none" />
-      <div className="absolute top-10 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
+    <section id="hero" className="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+      
+      {/* Background Radial Glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-[#ce23bd]/20 via-[#8551ef]/25 to-transparent rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-[450px] h-[450px] bg-[#1510da]/15 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-        
-        {/* Top Floating Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyan-300 text-xs font-bold mb-6 shadow-lg shadow-cyan-500/10 animate-fade-in">
-          <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-          <span>وكالة تسويق رقمي بالذكاء الاصطناعي في المملكة العربية السعودية 🇸🇦</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          {/* Right Column (Text in RTL) */}
+          <div className="lg:col-span-7 text-center lg:text-right space-y-6">
+            
+            {/* Top Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#160a38] border border-[#ce23bd]/40 shadow-[0_0_20px_rgba(206,35,189,0.25)]">
+              <span className="flex h-2 w-2 rounded-full bg-[#ce23bd] animate-ping" />
+              <span className="text-xs font-bold text-slate-200">
+                الجيل الجديد من التسويق بالذكاء الاصطناعي
+              </span>
+              <Sparkles className="w-3.5 h-3.5 text-[#ce23bd]" />
+            </div>
+
+            {/* Main Authentic Heading */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.25] tracking-tight">
+              شركة تسويق رقمي تعتمد على{' '}
+              <span className="gradient-text-via block mt-1.5">
+                الذكاء الاصطناعي في السعودية
+              </span>
+            </h1>
+
+            {/* Sub-heading */}
+            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              في <strong className="text-white font-bold">فيا (VIA AI)</strong> ندمج أحدث خوارزميات الذكاء الاصطناعي في السيو والحملات الإعلانية وإدارة السوشيال ميديا لتحويل الظهور إلى مبيعات حقيقية وأرباح مستدامة لعلامتك التجارية.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              <a
+                href="#contact"
+                className="btn-via-primary w-full sm:w-auto px-8 py-4 rounded-2xl text-sm font-black text-white flex items-center justify-center gap-3 group"
+              >
+                <span>احجز استشارتك المجانية</span>
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1.5 transition-transform" />
+              </a>
+
+              <a
+                href="#performance-meter"
+                className="btn-via-outline w-full sm:w-auto px-7 py-4 rounded-2xl text-sm font-bold text-white flex items-center justify-center gap-2.5"
+              >
+                <Zap className="w-4 h-4 text-[#ce23bd]" />
+                <span>أداة مقياس الأداء الشامل</span>
+              </a>
+            </div>
+
+            {/* Stats Proof Grid */}
+            <div className="pt-8 grid grid-cols-3 gap-3 border-t border-[#8551ef]/20 max-w-lg mx-auto lg:mx-0">
+              <div className="p-3 rounded-2xl bg-[#10072b]/60 border border-[#8551ef]/15 text-center">
+                <div className="text-2xl sm:text-3xl font-black gradient-text-gold font-mono">+114%</div>
+                <div className="text-[11px] text-slate-400 font-bold mt-1">نمو متوسط المبيعات</div>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-[#10072b]/60 border border-[#8551ef]/15 text-center">
+                <div className="text-2xl sm:text-3xl font-black text-[#ce23bd] font-mono">3.8x</div>
+                <div className="text-[11px] text-slate-400 font-bold mt-1">معدل العائد (ROAS)</div>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-[#10072b]/60 border border-[#8551ef]/15 text-center">
+                <div className="text-2xl sm:text-3xl font-black text-cyan-400 font-mono">-35%</div>
+                <div className="text-[11px] text-slate-400 font-bold mt-1">خفض الهدر الإعلاني</div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Left Column: The Authentic 3D Robot Avatar */}
+          <div className="lg:col-span-5 relative flex items-center justify-center">
+            
+            {/* Glowing Halo Aura behind the Robot */}
+            <div className="absolute w-[360px] h-[360px] sm:w-[460px] sm:h-[460px] rounded-full bg-gradient-to-tr from-[#ce23bd]/30 to-[#8551ef]/30 blur-3xl animate-pulse" />
+            <div className="absolute w-[280px] h-[280px] rounded-full border-2 border-[#ce23bd]/30 animate-spin [animation-duration:25s] border-dashed" />
+            <div className="absolute w-[340px] h-[340px] rounded-full border border-[#8551ef]/20 animate-spin [animation-duration:40s]" />
+
+            {/* Authentic 3D Robot Image with Floating Animation */}
+            <div className="relative z-10 max-w-[380px] sm:max-w-[460px] w-full flex justify-center">
+              <img
+                src="./media/Robot.webp"
+                alt="VIA AI Robot Avatar"
+                className="robo-avatar w-full h-auto max-h-[580px] object-contain select-none pointer-events-none"
+              />
+
+              {/* Floating Interactive Badges around the Robot */}
+              <div className="badge-float absolute -top-4 right-0 sm:-right-4 px-4 py-2 rounded-2xl bg-[#120738]/90 border border-[#ce23bd]/50 backdrop-blur-xl shadow-[0_10px_25px_rgba(206,35,189,0.3)] flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-lg bg-[#ce23bd]/20 flex items-center justify-center text-[#ce23bd]">
+                  <Bot className="w-4 h-4" />
+                </div>
+                <div className="text-right">
+                  <div className="text-[10px] text-slate-400">مساعد الذكاء الاصطناعي</div>
+                  <div className="text-xs font-black text-white">VIA Agent v4.2</div>
+                </div>
+              </div>
+
+              <div className="badge-float absolute bottom-8 -left-2 sm:-left-6 px-4 py-2.5 rounded-2xl bg-[#120738]/90 border border-[#8551ef]/50 backdrop-blur-xl shadow-[0_10px_25px_rgba(133,81,239,0.3)] flex items-center gap-3 [animation-delay:1.5s]">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                  <TrendingUp className="w-4 h-4" />
+                </div>
+                <div className="text-right">
+                  <div className="text-[10px] text-slate-400">تحليل ميزانيات فوري</div>
+                  <div className="text-xs font-black text-emerald-400 font-mono">+114% نمو متوقع</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-
-        {/* Main Headline */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-cairo text-white tracking-tight leading-[1.25] sm:leading-[1.2] max-w-4xl mx-auto mb-6">
-          نحوّل ظهورك الرقمي إلى <span className="gradient-text">مبيعات حقيقية</span> وأرباح مستدامة
-        </h1>
-
-        {/* Subtitle */}
-        <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10 font-normal">
-          في عصر البحث بالذكاء الاصطناعي، نصلح المشاكل التقنية في متجرك قبل إطلاق أي حملة، ونبني استراتيجيات متكاملة للظهور في Google وChatGPT وتيك توك لتحقيق أعلى عائد على استثمارك الإعلاني.
-        </p>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-16">
-          <a
-            href="#performance-meter"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-500 hover:from-cyan-300 hover:to-indigo-400 text-slate-950 font-black text-sm shadow-xl shadow-cyan-500/25 hover:shadow-cyan-400/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
-          >
-            <Sparkles className="w-4 h-4 text-slate-950" />
-            <span>قس أداء مشروعك مجاناً (أداة الذكاء الاصطناعي)</span>
-          </a>
-
-          <a
-            href="#contact"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 hover:text-white font-bold text-sm border border-slate-700/80 hover:border-slate-600 transition-all flex items-center justify-center gap-2"
-          >
-            <span>احجز استشارة مجانية</span>
-            <ArrowLeft className="w-4 h-4" />
-          </a>
-        </div>
-
-        {/* Metric Proof Badges */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800/80 text-right flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 flex-shrink-0">
-              <TrendingUp className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xl font-black font-cairo text-white">+340%</div>
-              <div className="text-[11px] text-slate-400">متوسط نمو مبيعات عملائنا</div>
-            </div>
-          </div>
-
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800/80 text-right flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 flex-shrink-0">
-              <Cpu className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xl font-black font-cairo text-white">GEO & SEO</div>
-              <div className="text-[11px] text-slate-400">ظهور في Google وChatGPT</div>
-            </div>
-          </div>
-
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800/80 text-right flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xl font-black font-cairo text-white">0% هدر</div>
-              <div className="text-[11px] text-slate-400">إصلاح المشاكل التقنية أولاً</div>
-            </div>
-          </div>
-
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800/80 text-right flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
-              <MessageSquare className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xl font-black font-cairo text-white">دعم مستمر</div>
-              <div className="text-[11px] text-slate-400">جلسات استشارية وتقارير شفافة</div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   );
 }
-
