@@ -11,3 +11,4 @@ while ((m = regex.exec(html)) !== null) {
 
 console.log('Total uploaded assets found:', urls.size);
 urls.forEach(u => console.log(u));
+

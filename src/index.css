@@ -9,26 +9,26 @@
   }
   
   body {
-    background: #09001f;
+    background: #050806;
     color: #f8fafc;
     overflow-x: hidden;
     position: relative;
   }
 
   ::selection {
-    background: #ce23bd;
-    color: #ffffff;
+    background: #22c55e;
+    color: #050806;
   }
 }
 
-/* Cosmic Nebula Ambient Background */
+/* Green Arrow Stealth Obsidian & Emerald Ambient Background */
 .cosmic-bg {
-  background-color: #09001f;
+  background-color: #050806;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(206, 35, 189, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 85% 30%, rgba(133, 81, 239, 0.25) 0%, transparent 50%),
-    radial-gradient(circle at 50% 70%, rgba(21, 16, 218, 0.18) 0%, transparent 60%),
-    radial-gradient(circle at 80% 90%, rgba(206, 35, 189, 0.15) 0%, transparent 40%);
+    radial-gradient(circle at 15% 15%, rgba(34, 197, 94, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 50% 70%, rgba(5, 150, 105, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 90%, rgba(34, 197, 94, 0.12) 0%, transparent 40%);
 }
 
 /* Authentic Floating Robot Keyframes */
@@ -78,31 +78,31 @@
 /* Neon Glow Pulsing */
 @keyframes neonPulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(206, 35, 189, 0.4), 0 0 40px rgba(133, 81, 239, 0.2);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(16, 185, 129, 0.2);
   }
   50% {
-    box-shadow: 0 0 35px rgba(206, 35, 189, 0.7), 0 0 65px rgba(133, 81, 239, 0.4);
+    box-shadow: 0 0 35px rgba(34, 197, 94, 0.7), 0 0 65px rgba(16, 185, 129, 0.4);
   }
 }
 
 @keyframes glowBorder {
   0%, 100% {
-    border-color: rgba(206, 35, 189, 0.4);
+    border-color: rgba(34, 197, 94, 0.4);
   }
   50% {
-    border-color: rgba(133, 81, 239, 0.8);
+    border-color: rgba(74, 222, 128, 0.8);
   }
 }
 
 .robo-avatar {
   animation: floatY 4s ease-in-out infinite;
-  filter: drop-shadow(0 20px 35px rgba(206, 35, 189, 0.35)) drop-shadow(0 0 60px rgba(133, 81, 239, 0.25));
+  filter: drop-shadow(0 20px 35px rgba(34, 197, 94, 0.35)) drop-shadow(0 0 60px rgba(16, 185, 129, 0.25));
   will-change: transform;
 }
 
 .robo-avatar-secondary {
   animation: floatr 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 15px 30px rgba(133, 81, 239, 0.4));
+  filter: drop-shadow(0 15px 30px rgba(34, 197, 94, 0.35));
   will-change: transform;
 }
 
@@ -120,56 +120,56 @@
   animation-play-state: paused;
 }
 
-/* Custom Glass & Glow Utilities */
+/* Custom Glass & Glow Utilities - Green Arrow Obsidian Cards */
 .via-card {
-  background: rgba(16, 7, 43, 0.65);
+  background: rgba(8, 15, 11, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(133, 81, 239, 0.25);
+  border: 1px solid rgba(34, 197, 94, 0.2);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .via-card:hover {
-  background: rgba(26, 12, 68, 0.85);
-  border-color: rgba(206, 35, 189, 0.6);
+  background: rgba(12, 22, 16, 0.9);
+  border-color: rgba(74, 222, 128, 0.55);
   transform: translateY(-6px);
-  box-shadow: 0 15px 35px -5px rgba(206, 35, 189, 0.3), 0 0 30px rgba(133, 81, 239, 0.2);
+  box-shadow: 0 15px 35px -5px rgba(34, 197, 94, 0.25), 0 0 30px rgba(16, 185, 129, 0.2);
 }
 
 .gradient-text-via {
-  background: linear-gradient(135deg, #ffffff 20%, #ce23bd 65%, #8551ef 100%);
+  background: linear-gradient(135deg, #ffffff 25%, #4ade80 65%, #22c55e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-gold {
-  background: linear-gradient(135deg, #fff275 0%, #ce23bd 100%);
+  background: linear-gradient(135deg, #a7f3d0 0%, #22c55e 50%, #10b981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .btn-via-primary {
-  background: linear-gradient(135deg, #ce23bd 0%, #8551ef 100%);
-  box-shadow: 0 0 25px rgba(206, 35, 189, 0.5);
+  background: linear-gradient(135deg, #15803d 0%, #22c55e 50%, #10b981 100%);
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.45);
   transition: all 0.3s ease;
 }
 
 .btn-via-primary:hover {
-  background: linear-gradient(135deg, #e62fd5 0%, #9663ff 100%);
-  box-shadow: 0 0 35px rgba(206, 35, 189, 0.8), 0 0 50px rgba(133, 81, 239, 0.4);
+  background: linear-gradient(135deg, #16a34a 0%, #4ade80 50%, #22c55e 100%);
+  box-shadow: 0 0 35px rgba(34, 197, 94, 0.8), 0 0 50px rgba(16, 185, 129, 0.4);
   transform: translateY(-2px) scale(1.02);
 }
 
 .btn-via-outline {
-  border: 1px solid rgba(206, 35, 189, 0.5);
-  background: rgba(206, 35, 189, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  background: rgba(34, 197, 94, 0.08);
   backdrop-filter: blur(12px);
   transition: all 0.3s ease;
 }
 
 .btn-via-outline:hover {
-  background: rgba(206, 35, 189, 0.2);
-  border-color: #ce23bd;
-  box-shadow: 0 0 25px rgba(206, 35, 189, 0.4);
+  background: rgba(34, 197, 94, 0.2);
+  border-color: #22c55e;
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.35);
   transform: translateY(-2px);
 }

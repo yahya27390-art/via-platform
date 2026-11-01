@@ -14,7 +14,7 @@ import WhatsAppFloat from './components/WhatsAppFloat';
 
 export default function App() {
   return (
-    <div className="min-h-screen cosmic-bg text-slate-100 flex flex-col font-tajawal selection:bg-[#ce23bd] selection:text-white overflow-x-hidden">
+    <div className="min-h-screen cosmic-bg text-slate-100 flex flex-col font-tajawal selection:bg-emerald-500 selection:text-black overflow-x-hidden">
       {/* Sticky Header */}
       <HeaderNav />
 

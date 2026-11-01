@@ -37,22 +37,22 @@ export default function ConsultationBooking() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-[#070017]">
+    <section id="contact" className="py-24 relative overflow-hidden bg-[#050806]">
       
-      {/* Background Glows */}
-      <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-[#ce23bd]/20 rounded-full blur-[160px] pointer-events-none" />
+      {/* Background Glows in Emerald */}
+      <div className="absolute top-1/2 left-1/3 w-[500px] h-[500px] bg-emerald-500/15 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#160a38] border border-[#ce23bd]/40 shadow-[0_0_20px_rgba(206,35,189,0.25)] text-[#ce23bd] text-xs font-bold mb-4">
-            <MessageCircle className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
+            <MessageCircle className="w-4 h-4 text-emerald-400" />
             <span>ابدأ رحلة النمو اليوم</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            تحدث مع <span className="gradient-text-via">خبير تسويقي الآن</span>
+            تحدث مع <span className="gradient-text-via">مستشار Green Arrow الآن</span>
           </h2>
 
           <p className="mt-4 text-base text-slate-300 leading-relaxed max-w-xl mx-auto">
@@ -63,10 +63,10 @@ export default function ConsultationBooking() {
         {/* Form and Contact Info Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
-          {/* Right Column: Contact Highlights & GIF (5 cols) */}
-          <div className="lg:col-span-5 via-card p-8 rounded-3xl flex flex-col justify-between border border-[#8551ef]/30">
+          {/* Right Column: Contact Highlights (5 cols) */}
+          <div className="lg:col-span-5 via-card p-8 rounded-3xl flex flex-col justify-between border border-emerald-500/30 bg-[#070e0a]">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-[#ce23bd]/15 border border-[#ce23bd]/30 flex items-center justify-center text-[#ce23bd] mb-6">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
                 <Sparkles className="w-6 h-6" />
               </div>
 
@@ -80,21 +80,21 @@ export default function ConsultationBooking() {
 
               <div className="space-y-4">
                 <div className="flex items-center gap-3 text-xs text-slate-200">
-                  <div className="w-8 h-8 rounded-lg bg-[#160a38] flex items-center justify-center text-[#ce23bd]">
+                  <div className="w-8 h-8 rounded-lg bg-[#0a140f] flex items-center justify-center text-emerald-400">
                     <Clock className="w-4 h-4" />
                   </div>
                   <span>الرد والتواصل خلال أقل من ساعتين عمل</span>
                 </div>
 
                 <div className="flex items-center gap-3 text-xs text-slate-200">
-                  <div className="w-8 h-8 rounded-lg bg-[#160a38] flex items-center justify-center text-[#8551ef]">
+                  <div className="w-8 h-8 rounded-lg bg-[#0a140f] flex items-center justify-center text-emerald-300">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
                   <span>سرية تامة لبيانات متجرك وأرقامك التسويقية</span>
                 </div>
 
                 <div className="flex items-center gap-3 text-xs text-slate-200">
-                  <div className="w-8 h-8 rounded-lg bg-[#160a38] flex items-center justify-center text-emerald-400">
+                  <div className="w-8 h-8 rounded-lg bg-[#0a140f] flex items-center justify-center text-emerald-400">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
                   <span>بدون أي التزام مالي أو شروط مسبقة</span>
@@ -103,7 +103,7 @@ export default function ConsultationBooking() {
             </div>
 
             {/* Direct Contact Links */}
-            <div className="pt-8 border-t border-[#8551ef]/20 mt-8 space-y-3">
+            <div className="pt-8 border-t border-emerald-500/15 mt-8 space-y-3">
               <a 
                 href="https://wa.me/966569623131" 
                 target="_blank" 
@@ -117,20 +117,20 @@ export default function ConsultationBooking() {
               </a>
 
               <a 
-                href="mailto:contact@via-ai.co"
-                className="flex items-center gap-3 text-xs font-bold text-slate-300 hover:text-[#ce23bd] transition-colors"
+                href="mailto:contact@greenarrow.sa"
+                className="flex items-center gap-3 text-xs font-bold text-slate-300 hover:text-emerald-400 transition-colors"
               >
-                <div className="w-7 h-7 rounded-lg bg-[#ce23bd]/15 flex items-center justify-center text-[#ce23bd]">
+                <div className="w-7 h-7 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
-                <span>البريد الإلكتروني: contact@via-ai.co</span>
+                <span>البريد الإلكتروني: contact@greenarrow.sa</span>
               </a>
             </div>
 
           </div>
 
           {/* Left Column: Form (7 cols) */}
-          <div className="lg:col-span-7 via-card p-8 sm:p-10 rounded-3xl border border-[#ce23bd]/30">
+          <div className="lg:col-span-7 via-card p-8 sm:p-10 rounded-3xl border border-emerald-500/30 bg-[#070e0a]">
             {submitted ? (
               <div className="py-16 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
@@ -138,7 +138,7 @@ export default function ConsultationBooking() {
                 </div>
                 <h3 className="text-2xl font-black text-white">تم استلام طلبك بنجاح!</h3>
                 <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                  شكراً لثقتك في فيا (VIA AI). سيقوم أحد مستشارينا التسويقيين بالتواصل معك عبر الواتساب أو الهاتف خلال وقت قصير جداً.
+                  شكراً لثقتك في Green Arrow. سيقوم أحد خبرائنا التسويقيين بالتواصل معك عبر الواتساب أو الهاتف خلال وقت قصير جداً.
                 </p>
                 <button
                   type="button"
@@ -159,7 +159,7 @@ export default function ConsultationBooking() {
                       placeholder="مثال: متجر أصايل للعطور"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ce23bd]"
+                      className="w-full px-4 py-3 rounded-xl bg-[#050806] border border-emerald-500/30 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400"
                     />
                   </div>
 
@@ -171,7 +171,7 @@ export default function ConsultationBooking() {
                       placeholder="05xxxxxxxx"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 font-mono text-left focus:outline-none focus:border-[#ce23bd]"
+                      className="w-full px-4 py-3 rounded-xl bg-[#050806] border border-emerald-500/30 text-xs text-white placeholder-slate-500 font-mono text-left focus:outline-none focus:border-emerald-400"
                     />
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function ConsultationBooking() {
                       placeholder="info@yourdomain.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 font-mono text-left focus:outline-none focus:border-[#ce23bd]"
+                      className="w-full px-4 py-3 rounded-xl bg-[#050806] border border-emerald-500/30 text-xs text-white placeholder-slate-500 font-mono text-left focus:outline-none focus:border-emerald-400"
                     />
                   </div>
 
@@ -193,14 +193,14 @@ export default function ConsultationBooking() {
                     <select
                       value={service}
                       onChange={(e) => setService(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white focus:outline-none focus:border-[#ce23bd]"
+                      className="w-full px-4 py-3 rounded-xl bg-[#050806] border border-emerald-500/30 text-xs text-white focus:outline-none focus:border-emerald-400"
                     >
-                      <option value="ads">إدارة الحملات الإعلانية الممولة</option>
+                      <option value="ads">إدارة الحملات الإعلانية (Performance Ads)</option>
                       <option value="seo">تحسين محركات البحث وسيو الذكاء الاصطناعي</option>
                       <option value="ecommerce">حلول وتطوير المتاجر الإلكترونية</option>
                       <option value="social">إدارة منصات التواصل الاجتماعي</option>
                       <option value="design">التصميم والموشن جرافيك</option>
-                      <option value="full">استراتيجية تسويقية متكاملة</option>
+                      <option value="full">استراتيجية نمو تسويقية متكاملة</option>
                     </select>
                   </div>
                 </div>
@@ -209,17 +209,17 @@ export default function ConsultationBooking() {
                   <label className="text-xs font-bold text-slate-300">تفاصيل إضافية عن مشروعك أو التحديات الحالية:</label>
                   <textarea
                     rows={4}
-                    placeholder="حدثنا باختصار عن متجرك، ميزانيتك الإعلانية التقريبية، والهدف الذي تود تحقيقه معنا..."
+                    placeholder="حدثنا باختصار عن متجرك، ميزانيتك الإعلانية التقريبية، والهدف الذي تود تحقيقه مع Green Arrow..."
                     value={details}
                     onChange={(e) => setDetails(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-[#0e0428] border border-[#8551ef]/30 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ce23bd]"
+                    className="w-full px-4 py-3 rounded-xl bg-[#050806] border border-emerald-500/30 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="btn-via-primary w-full py-4 rounded-xl text-xs sm:text-sm font-black text-white flex items-center justify-center gap-2"
+                  className="btn-via-primary w-full py-4 rounded-xl text-xs sm:text-sm font-black text-black flex items-center justify-center gap-2"
                 >
                   <Send className="w-4 h-4" />
                   <span>{loading ? 'جاري إرسال الطلب...' : 'احجز استشارتك المجانية الآن'}</span>

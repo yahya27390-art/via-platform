@@ -12,13 +12,25 @@ export default {
         cairo: ['Cairo', 'Tajawal', 'sans-serif'],
       },
       colors: {
+        ga: {
+          dark: '#050806',
+          obsidian: '#080d0a',
+          card: '#0c130f',
+          cardHover: '#121d17',
+          border: 'rgba(34, 197, 94, 0.2)',
+          borderHover: 'rgba(34, 197, 94, 0.45)',
+          green: '#22c55e',
+          neon: '#00ff88',
+          emerald: '#10b981',
+          lime: '#4ade80'
+        },
         via: {
-          dark: '#030712',
-          card: '#0B0F19',
-          border: '#1F293D',
-          cyan: '#06B6D4',
-          emerald: '#10B981',
-          violet: '#8B5CF6'
+          dark: '#050806',
+          card: '#0c130f',
+          border: 'rgba(34, 197, 94, 0.2)',
+          cyan: '#10b981',
+          emerald: '#22c55e',
+          violet: '#00ff88'
         }
       },
       animation: {
@@ -27,12 +39,11 @@ export default {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 15px rgba(6, 182, 212, 0.3)' },
-          '100%': { boxShadow: '0 0 35px rgba(6, 182, 212, 0.6)' },
+          '0%': { boxShadow: '0 0 15px rgba(34, 197, 94, 0.3)' },
+          '100%': { boxShadow: '0 0 35px rgba(34, 197, 94, 0.7)' },
         }
       }
     },
   },
   plugins: [],
 }
-

@@ -16,7 +16,7 @@ const SERVICES_DATA = [
   },
   {
     id: 'ads',
-    title: 'إدارة الحملات الإعلانية',
+    title: 'إدارة الحملات الإعلانية (Performance Ads)',
     desc: 'استثمر بذكاء: إدارة الحملات الإعلانية الموجهة بدقة عبر سناب شات، تيك توك، ميتا، وجوجل مع تحسين العائد ROAS يومياً.',
     iconImg: './media/service-ads.webp',
     tag: 'ROAS مضاعف',
@@ -83,23 +83,23 @@ export default function ServicesCatalog() {
     <section id="services" className="py-24 relative overflow-hidden">
       
       {/* Background Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#8551ef]/15 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#160a38] border border-[#ce23bd]/40 shadow-[0_0_20px_rgba(206,35,189,0.25)] text-[#ce23bd] text-xs font-bold mb-4">
-            <Sparkles className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
+            <Sparkles className="w-4 h-4 text-emerald-400" />
             <span>خدمات تسويق رقمي متكاملة لنمو أعمالك</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
-            اكتشف <span className="gradient-text-via">خدماتنا المتكاملة</span>
+            خدمات <span className="gradient-text-via">Green Arrow المتكاملة</span>
           </h2>
 
           <p className="mt-4 text-base text-slate-300 leading-relaxed max-w-2xl mx-auto">
-            نجمع بين الذكاء الاصطناعي والخبرة التسويقية لتقديم حلول شاملة تغطي كل مرحلة في رحلة عميلك من لحظة الظهور وحتى إتمام الشراء.
+            نجمع بين الذكاء الاصطناعي واستراتيجيات إعلانات الأداء (Performance Ads) لتقديم حلول شاملة تغطي كل مرحلة في رحلة عميلك من لحظة الظهور وحتى إتمام الشراء.
           </p>
         </div>
 
@@ -112,29 +112,29 @@ export default function ServicesCatalog() {
             >
               
               {/* Top Accent Line on Hover */}
-              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-[#ce23bd] to-[#8551ef] opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-emerald-500 to-green-400 opacity-0 group-hover:opacity-100 transition-opacity" />
 
               <div>
                 {/* 3D Icon Container */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="relative w-20 h-20 rounded-2xl bg-[#160a38] border border-[#8551ef]/30 flex items-center justify-center p-2 shadow-[0_10px_25px_rgba(9,0,31,0.6)] group-hover:scale-110 transition-transform duration-300">
+                  <div className="relative w-20 h-20 rounded-2xl bg-[#09120c] border border-emerald-500/30 flex items-center justify-center p-2 shadow-[0_10px_25px_rgba(5,8,6,0.6)] group-hover:scale-110 transition-transform duration-300">
                     <img
                       src={srv.iconImg}
                       alt={srv.title}
-                      className="w-full h-full object-contain filter drop-shadow-[0_5px_10px_rgba(206,35,189,0.4)]"
+                      className="w-full h-full object-contain filter drop-shadow-[0_5px_10px_rgba(34,197,94,0.35)]"
                       onError={(e) => {
                         e.target.style.display = 'none';
                       }}
                     />
                   </div>
 
-                  <span className="px-3 py-1 rounded-full bg-[#ce23bd]/15 text-[#ce23bd] border border-[#ce23bd]/30 text-[11px] font-bold">
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[11px] font-bold">
                     {srv.tag}
                   </span>
                 </div>
 
                 {/* Title & Description */}
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#ce23bd] transition-colors">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors">
                   {srv.title}
                 </h3>
                 <p className="text-xs text-slate-300 leading-relaxed mb-6 font-normal">
@@ -142,10 +142,10 @@ export default function ServicesCatalog() {
                 </p>
 
                 {/* Deliverables Bullet points */}
-                <ul className="space-y-2 mb-6 border-t border-[#8551ef]/20 pt-4">
+                <ul className="space-y-2 mb-6 border-t border-emerald-500/15 pt-4">
                   {srv.deliverables.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-[11px] text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#ce23bd] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -153,7 +153,7 @@ export default function ServicesCatalog() {
               </div>
 
               {/* Action buttons */}
-              <div className="flex items-center justify-between pt-4 border-t border-[#8551ef]/15 mt-auto">
+              <div className="flex items-center justify-between pt-4 border-t border-emerald-500/15 mt-auto">
                 <button
                   type="button"
                   onClick={() => setSelectedService(srv)}
@@ -164,7 +164,7 @@ export default function ServicesCatalog() {
 
                 <a
                   href="#contact"
-                  className="px-4 py-2 rounded-xl bg-[#ce23bd]/20 hover:bg-[#ce23bd] text-white border border-[#ce23bd]/40 text-xs font-bold flex items-center gap-1.5 transition-all"
+                  className="px-4 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500 text-emerald-300 hover:text-black border border-emerald-500/30 text-xs font-bold flex items-center gap-1.5 transition-all"
                 >
                   <span>ابدأ الآن</span>
                   <ArrowLeft className="w-3 h-3" />
@@ -179,22 +179,22 @@ export default function ServicesCatalog() {
 
       {/* Detail Modal */}
       {selectedService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-          <div className="via-card max-w-lg w-full p-6 sm:p-8 rounded-3xl relative border border-[#ce23bd]/50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+          <div className="via-card max-w-lg w-full p-6 sm:p-8 rounded-3xl relative border border-emerald-500/50 bg-[#080d0a]">
             <button
               onClick={() => setSelectedService(null)}
-              className="absolute top-5 left-5 p-2 rounded-xl bg-[#160a38] text-slate-400 hover:text-white"
+              className="absolute top-5 left-5 p-2 rounded-xl bg-[#0e1812] text-slate-400 hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
 
             <div className="flex items-center gap-4 mb-5">
-              <div className="w-16 h-16 rounded-2xl bg-[#160a38] p-2 border border-[#ce23bd]/30">
+              <div className="w-16 h-16 rounded-2xl bg-[#0e1812] p-2 border border-emerald-500/30">
                 <img src={selectedService.iconImg} alt="" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">{selectedService.title}</h3>
-                <span className="text-xs text-[#ce23bd] font-bold">{selectedService.tag}</span>
+                <span className="text-xs text-emerald-400 font-bold">{selectedService.tag}</span>
               </div>
             </div>
 
@@ -203,10 +203,10 @@ export default function ServicesCatalog() {
             </p>
 
             <div className="space-y-3 mb-8">
-              <div className="text-xs font-bold text-white">ما ستحصل عليه مع فيا:</div>
+              <div className="text-xs font-bold text-white">ما ستحصل عليه مع Green Arrow:</div>
               {selectedService.deliverables.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300 bg-[#0e0428] p-2.5 rounded-xl border border-[#8551ef]/20">
-                  <CheckCircle2 className="w-4 h-4 text-[#ce23bd] shrink-0 mt-0.5" />
+                <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300 bg-[#060a08] p-2.5 rounded-xl border border-emerald-500/20">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -215,7 +215,7 @@ export default function ServicesCatalog() {
             <a
               href="#contact"
               onClick={() => setSelectedService(null)}
-              className="btn-via-primary w-full py-3.5 rounded-xl text-center text-xs font-bold text-white block"
+              className="btn-via-primary w-full py-3.5 rounded-xl text-center text-xs font-black text-black block"
             >
               طلب استشارة لهذه الخدمة
             </a>
