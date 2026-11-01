@@ -155,3 +155,4 @@ export default function GreenArrowHeroAvatar() {
     </div>
   );
 }
+

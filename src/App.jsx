@@ -34,11 +34,11 @@ export default function App() {
         {/* 2. Scrolling Results & Clients Banner */}
         <MarqueeBanner />
 
-        {/* 3. Comprehensive Performance Meter (أداة مقياس الأداء الشامل) */}
-        <PerformanceMeter />
-
-        {/* 4. Full Services Catalog with 3D Icons (اكتشف خدماتنا المتكاملة) */}
+        {/* 3. Full Services Catalog with 3D Icons (اكتشف خدماتنا المتكاملة) */}
         <ServicesCatalog />
+
+        {/* 4. Comprehensive Performance Meter & ROI Calculator (أداة مقياس الأداء وهدر الميزانيات) */}
+        <PerformanceMeter />
 
         {/* 5. Our Works & Case Studies with Live Screenshots (أعمالنا وقصص النجاح) */}
         <CaseStudies />

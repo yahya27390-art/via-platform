@@ -105,25 +105,44 @@ export default function ConsultationBooking() {
             {/* Direct Contact Links */}
             <div className="pt-8 border-t border-emerald-500/15 mt-8 space-y-3">
               <a 
-                href="https://wa.me/966569623131" 
+                href="tel:0575901487" 
+                className="flex items-center gap-3 p-2.5 rounded-2xl bg-[#0a140f] border border-emerald-500/25 hover:border-emerald-400 text-xs font-bold text-slate-200 hover:text-emerald-300 transition-all group"
+              >
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/15 group-hover:bg-emerald-500 group-hover:text-black flex items-center justify-center text-emerald-400 transition-colors">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-400 font-medium">اتصال مباشر (الرقم المعتمد):</div>
+                  <div className="font-mono text-sm text-emerald-400 font-bold">0575901487</div>
+                </div>
+              </a>
+
+              <a 
+                href="https://wa.me/966575901487" 
                 target="_blank" 
                 rel="noreferrer"
-                className="flex items-center gap-3 text-xs font-bold text-slate-300 hover:text-emerald-400 transition-colors"
+                className="flex items-center gap-3 p-2.5 rounded-2xl bg-[#0a140f] border border-emerald-500/25 hover:border-emerald-400 text-xs font-bold text-slate-200 hover:text-emerald-300 transition-all group"
               >
-                <div className="w-7 h-7 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400">
-                  <Phone className="w-3.5 h-3.5" />
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/15 group-hover:bg-emerald-500 group-hover:text-black flex items-center justify-center text-emerald-400 transition-colors">
+                  <MessageCircle className="w-4 h-4" />
                 </div>
-                <span>واتساب مباشر: +966 56 962 3131</span>
+                <div>
+                  <div className="text-[10px] text-slate-400 font-medium">محادثة فورية (واتساب):</div>
+                  <div className="font-mono text-sm text-emerald-400 font-bold">0575901487</div>
+                </div>
               </a>
 
               <a 
                 href="mailto:contact@greenarrow.sa"
-                className="flex items-center gap-3 text-xs font-bold text-slate-300 hover:text-emerald-400 transition-colors"
+                className="flex items-center gap-3 p-2.5 rounded-2xl bg-[#0a140f] border border-emerald-500/25 hover:border-emerald-400 text-xs font-bold text-slate-200 hover:text-emerald-300 transition-all group"
               >
-                <div className="w-7 h-7 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400">
-                  <Mail className="w-3.5 h-3.5" />
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/15 group-hover:bg-emerald-500 group-hover:text-black flex items-center justify-center text-emerald-400 transition-colors">
+                  <Mail className="w-4 h-4" />
                 </div>
-                <span>البريد الإلكتروني: contact@greenarrow.sa</span>
+                <div>
+                  <div className="text-[10px] text-slate-400 font-medium">البريد الإلكتروني المعتمد:</div>
+                  <div className="font-mono text-xs text-slate-200">contact@greenarrow.sa</div>
+                </div>
               </a>
             </div>
 

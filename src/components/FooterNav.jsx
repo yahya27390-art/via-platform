@@ -38,15 +38,22 @@ export default function FooterNav() {
               جرين أرو (Green Arrow) - شريكك الاستراتيجي في إعلانات الأداء (Performance Ads) ونمو المبيعات وسيو الذكاء الاصطناعي في المملكة العربية السعودية والخليج العربي.
             </p>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap items-center gap-2.5">
               <a
-                href="https://wa.me/966569623131"
+                href="https://wa.me/966575901487"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs font-bold text-emerald-300 hover:bg-emerald-500 hover:text-black transition-all"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs font-bold text-emerald-300 hover:bg-emerald-500 hover:text-black transition-all"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>تواصل عبر الواتساب: 0569623131</span>
+                <span>واتساب: 0575901487</span>
+              </a>
+
+              <a
+                href="tel:0575901487"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#0a140f] border border-emerald-500/30 text-xs font-bold text-slate-200 hover:text-emerald-300 transition-all font-mono"
+              >
+                <span>اتصال: 0575901487</span>
               </a>
             </div>
           </div>
