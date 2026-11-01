@@ -38,7 +38,7 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div data-reveal="fade-up" className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
             <Sparkles className="w-4 h-4 text-emerald-400" />
             <span>شهادات تصنع الثقة</span>
@@ -58,6 +58,8 @@ export default function TestimonialsSection() {
           {TESTIMONIALS.map((t, idx) => (
             <div
               key={idx}
+              data-reveal="fade-up"
+              style={{ transitionDelay: `${idx * 130}ms` }}
               className="via-card p-8 rounded-3xl flex flex-col justify-between relative group overflow-hidden bg-[#070e0a]"
             >
               <div className="absolute top-4 left-6 text-emerald-500/15 group-hover:text-emerald-500/30 transition-colors">

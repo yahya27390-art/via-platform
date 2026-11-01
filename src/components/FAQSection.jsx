@@ -40,7 +40,7 @@ export default function FAQSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16">
+        <div data-reveal="fade-up" className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
             <HelpCircle className="w-4 h-4 text-emerald-400" />
             <span>هل لديك استفسار؟</span>
@@ -57,11 +57,13 @@ export default function FAQSection() {
 
         {/* Accordion List */}
         <div className="space-y-4">
-          {FAQS.map((faq) => {
+          {FAQS.map((faq, idx) => {
             const isOpen = openId === faq.id;
             return (
               <div
                 key={faq.id}
+                data-reveal="fade-up"
+                style={{ transitionDelay: `${idx * 100}ms` }}
                 className="via-card rounded-2xl overflow-hidden transition-all duration-300 bg-[#070e0a]"
               >
                 <button

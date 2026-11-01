@@ -87,8 +87,8 @@ export default function ServicesCatalog() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Header with Scroll Reveal */}
+        <div data-reveal="fade-up" className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
             <Sparkles className="w-4 h-4 text-emerald-400" />
             <span>خدمات تسويق رقمي متكاملة لنمو أعمالك</span>
@@ -103,11 +103,13 @@ export default function ServicesCatalog() {
           </p>
         </div>
 
-        {/* Services 3x2 Grid with Authentic 3D Icons */}
+        {/* Services 3x2 Grid with Staggered Scroll Reveal */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES_DATA.map((srv) => (
+          {SERVICES_DATA.map((srv, idx) => (
             <div
               key={srv.id}
+              data-reveal="fade-up"
+              style={{ transitionDelay: `${idx * 100}ms` }}
               className="via-card p-7 rounded-3xl flex flex-col justify-between group relative overflow-hidden"
             >
               

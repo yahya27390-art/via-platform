@@ -81,7 +81,7 @@ export default function CaseStudies() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div data-reveal="fade-up" className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
             <Award className="w-4 h-4 text-emerald-400" />
             <span>نتائج موثقة ومثبتة</span>
@@ -97,7 +97,7 @@ export default function CaseStudies() {
         </div>
 
         {/* Category Switcher Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
+        <div data-reveal="fade-down" style={{ transitionDelay: '100ms' }} className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
@@ -117,7 +117,7 @@ export default function CaseStudies() {
         </div>
 
         {/* Brand Switcher Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <div data-reveal="fade-up" style={{ transitionDelay: '150ms' }} className="flex flex-wrap items-center justify-center gap-2 mb-10">
           {filteredProjects.map((p, idx) => (
             <button
               key={p.client}
@@ -135,7 +135,7 @@ export default function CaseStudies() {
 
         {/* Showcase Feature Card with Screenshot */}
         {currentProject && (
-          <div className="via-card p-6 sm:p-10 rounded-3xl border border-emerald-500/30 shadow-[0_20px_50px_rgba(5,8,6,0.9)] bg-[#070e0a]">
+          <div data-reveal="zoom-in" style={{ transitionDelay: '200ms' }} className="via-card p-6 sm:p-10 rounded-3xl border border-emerald-500/30 shadow-[0_20px_50px_rgba(5,8,6,0.9)] bg-[#070e0a]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
               
               {/* Left Column (Screenshot) */}

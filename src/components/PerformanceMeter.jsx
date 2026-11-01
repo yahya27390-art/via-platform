@@ -93,7 +93,7 @@ export default function PerformanceMeter() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div data-reveal="fade-up" className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
             <Gauge className="w-4 h-4 text-emerald-400" />
             <span>Green Arrow Performance Engine</span>
@@ -111,7 +111,7 @@ export default function PerformanceMeter() {
         {/* 4 Feature Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
           
-          <div className="via-card p-6 rounded-3xl relative overflow-hidden group">
+          <div data-reveal="fade-up" style={{ transitionDelay: '50ms' }} className="via-card p-6 rounded-3xl relative overflow-hidden group">
             <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4 group-hover:scale-110 transition-transform">
               <Activity className="w-6 h-6" />
             </div>
@@ -121,7 +121,7 @@ export default function PerformanceMeter() {
             </p>
           </div>
 
-          <div className="via-card p-6 rounded-3xl relative overflow-hidden group">
+          <div data-reveal="fade-up" style={{ transitionDelay: '150ms' }} className="via-card p-6 rounded-3xl relative overflow-hidden group">
             <div className="w-12 h-12 rounded-2xl bg-emerald-600/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300 mb-4 group-hover:scale-110 transition-transform">
               <Layers className="w-6 h-6" />
             </div>
@@ -131,7 +131,7 @@ export default function PerformanceMeter() {
             </p>
           </div>
 
-          <div className="via-card p-6 rounded-3xl relative overflow-hidden group">
+          <div data-reveal="fade-up" style={{ transitionDelay: '250ms' }} className="via-card p-6 rounded-3xl relative overflow-hidden group">
             <div className="w-12 h-12 rounded-2xl bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-teal-400 mb-4 group-hover:scale-110 transition-transform">
               <BrainCircuit className="w-6 h-6" />
             </div>
@@ -141,7 +141,7 @@ export default function PerformanceMeter() {
             </p>
           </div>
 
-          <div className="via-card p-6 rounded-3xl relative overflow-hidden group">
+          <div data-reveal="fade-up" style={{ transitionDelay: '350ms' }} className="via-card p-6 rounded-3xl relative overflow-hidden group">
             <div className="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-110 transition-transform">
               <Clock className="w-6 h-6" />
             </div>
@@ -154,7 +154,7 @@ export default function PerformanceMeter() {
         </div>
 
         {/* Interactive Calculator Workspace */}
-        <div className="via-card p-6 sm:p-10 rounded-3xl border border-emerald-500/30 shadow-[0_20px_50px_rgba(5,8,6,0.9)] bg-[#070e0a]">
+        <div data-reveal="zoom-in" style={{ transitionDelay: '200ms' }} className="via-card p-6 sm:p-10 rounded-3xl border border-emerald-500/30 shadow-[0_20px_50px_rgba(5,8,6,0.9)] bg-[#070e0a]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Sliders Input Column */}

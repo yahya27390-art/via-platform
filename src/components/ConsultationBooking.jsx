@@ -44,8 +44,8 @@ export default function ConsultationBooking() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Header with Scroll Reveal */}
+        <div data-reveal="fade-up" className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
             <MessageCircle className="w-4 h-4 text-emerald-400" />
             <span>ابدأ رحلة النمو اليوم</span>
@@ -64,7 +64,7 @@ export default function ConsultationBooking() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Right Column: Contact Highlights (5 cols) */}
-          <div className="lg:col-span-5 via-card p-8 rounded-3xl flex flex-col justify-between border border-emerald-500/30 bg-[#070e0a]">
+          <div data-reveal="fade-right" style={{ transitionDelay: '100ms' }} className="lg:col-span-5 via-card p-8 rounded-3xl flex flex-col justify-between border border-emerald-500/30 bg-[#070e0a]">
             <div>
               <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
                 <Sparkles className="w-6 h-6" />
@@ -129,8 +129,8 @@ export default function ConsultationBooking() {
 
           </div>
 
-          {/* Left Column: Form (7 cols) */}
-          <div className="lg:col-span-7 via-card p-8 sm:p-10 rounded-3xl border border-emerald-500/30 bg-[#070e0a]">
+          {/* Left Column: Form (7 cols) with Scroll Reveal */}
+          <div data-reveal="fade-left" style={{ transitionDelay: '200ms' }} className="lg:col-span-7 via-card p-8 sm:p-10 rounded-3xl border border-emerald-500/30 bg-[#070e0a]">
             {submitted ? (
               <div className="py-16 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Rocket, Target, Cpu, Crown, ArrowLeft, Sparkles, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Rocket, Target, Cpu, Crown, ArrowLeft, Sparkles, CheckCircle2, Compass, Award } from 'lucide-react';
 
 const STEPS = [
   {
@@ -33,6 +33,8 @@ const STEPS = [
 ];
 
 export default function JourneyTimeline() {
+  const [guideHover, setGuideHover] = useState(false);
+
   return (
     <section id="journey" className="py-24 relative overflow-hidden">
       
@@ -41,8 +43,8 @@ export default function JourneyTimeline() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Header with Scroll Reveal */}
+        <div data-reveal="fade-up" className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0b1610] border border-emerald-500/40 shadow-[0_0_20px_rgba(34,197,94,0.25)] text-emerald-300 text-xs font-bold mb-4">
             <Sparkles className="w-4 h-4 text-emerald-400" />
             <span>رحلتك مع Green Arrow</span>
@@ -57,19 +59,25 @@ export default function JourneyTimeline() {
           </p>
         </div>
 
-        {/* Content Layout: 4 Steps on Right + Second 3D Robot on Left */}
+        {/* Content Layout: 4 Steps on Right + Brand New Guide 3D Robot on Left */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Steps Column (7 cols) */}
-          <div className="lg:col-span-7 space-y-5">
-            {STEPS.map((s) => {
+          {/* Steps Column (7 cols) with Staggered Scroll Reveal */}
+          <div className="lg:col-span-7 space-y-5 relative">
+            
+            {/* Connecting Luminous Vertical Line */}
+            <div className="hidden sm:block absolute right-[35px] top-8 bottom-16 w-[2px] bg-gradient-to-b from-emerald-500 via-green-400 to-emerald-700 opacity-30 pointer-events-none" />
+
+            {STEPS.map((s, idx) => {
               const Icon = s.icon;
               return (
                 <div
                   key={s.step}
+                  data-reveal="fade-up"
+                  style={{ transitionDelay: `${idx * 120}ms` }}
                   className="via-card p-6 rounded-3xl flex items-start gap-5 relative group overflow-hidden"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#09120c] border border-emerald-500/30 flex items-center justify-center shrink-0 shadow-[0_5px_15px_rgba(5,8,6,0.6)] group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 rounded-2xl bg-[#09120c] border border-emerald-500/30 flex items-center justify-center shrink-0 shadow-[0_5px_15px_rgba(5,8,6,0.6)] group-hover:scale-110 group-hover:border-emerald-400 transition-all duration-300 z-10">
                     <Icon className={`w-7 h-7 ${s.color}`} />
                   </div>
 
@@ -90,7 +98,7 @@ export default function JourneyTimeline() {
               );
             })}
 
-            <div className="pt-4 text-center sm:text-right">
+            <div data-reveal="fade-up" style={{ transitionDelay: '480ms' }} className="pt-4 text-center sm:text-right">
               <a
                 href="#contact"
                 className="btn-via-primary inline-flex items-center gap-2 px-8 py-4 rounded-2xl text-xs font-black text-black"
@@ -101,24 +109,48 @@ export default function JourneyTimeline() {
             </div>
           </div>
 
-          {/* Left Column: Authentic Second Robot (Robot-1.webp) */}
-          <div className="lg:col-span-5 relative flex items-center justify-center">
+          {/* Left Column: Brand New 3D Green Arrow Guide Mascot with Interactive Animation */}
+          <div 
+            data-reveal="zoom-in"
+            style={{ transitionDelay: '200ms' }}
+            className="lg:col-span-5 relative flex items-center justify-center"
+            onMouseEnter={() => setGuideHover(true)}
+            onMouseLeave={() => setGuideHover(false)}
+          >
             
-            {/* Glowing Rings behind Robot 2 in Emerald */}
-            <div className="absolute w-[340px] h-[340px] rounded-full bg-gradient-to-tr from-emerald-500/30 via-green-500/20 to-transparent blur-3xl animate-pulse" />
+            {/* Glowing Rings behind Guide Avatar */}
+            <div className="absolute w-[360px] h-[360px] rounded-full bg-gradient-to-tr from-emerald-500/30 via-green-500/20 to-transparent blur-3xl animate-pulse" />
+            <div className="absolute w-[320px] h-[320px] rounded-full border border-emerald-500/25 spin-reverse pointer-events-none" />
             
-            <div className="relative z-10 max-w-[400px] w-full flex justify-center">
-              <img
-                src="./media/Robot-1.webp"
-                alt="Green Arrow Growth Guide"
-                className="robo-avatar-secondary w-full h-auto max-h-[500px] object-contain select-none pointer-events-none"
-              />
+            <div className="relative z-10 max-w-[380px] w-full flex flex-col items-center">
+              
+              {/* Image Frame with Scanning Laser */}
+              <div className="relative rounded-3xl overflow-hidden border border-emerald-500/35 shadow-[0_20px_50px_rgba(5,8,6,0.95)] group">
+                <div className="cyber-scanner rounded-full" />
+                
+                <img
+                  src="./media/green-arrow-avatar-guide.jpg"
+                  alt="Green Arrow Growth Guide Mascot"
+                  className="robo-avatar-secondary w-full h-auto max-h-[480px] object-contain transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    e.target.src = './media/Robot-1.webp';
+                  }}
+                />
+
+                {/* Vignette Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050806] via-transparent to-transparent opacity-60 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#050806]/40 via-transparent to-transparent pointer-events-none" />
+              </div>
 
               {/* Floating Badge */}
-              <div className="badge-float absolute bottom-6 right-2 px-4 py-2 rounded-2xl bg-[#09120c]/95 border border-emerald-500/50 backdrop-blur-xl shadow-[0_10px_25px_rgba(34,197,94,0.3)]">
-                <div className="text-[10px] text-slate-400">مرافقة مستمرة</div>
-                <div className="text-xs font-black text-emerald-400">من البداية حتى القمة ︽</div>
+              <div className="badge-float absolute -bottom-4 right-2 sm:right-6 px-4 py-2.5 rounded-2xl bg-[#080d0a]/95 border border-emerald-500/50 backdrop-blur-xl shadow-[0_12px_30px_rgba(34,197,94,0.35)] flex items-center gap-2.5">
+                <Compass className="w-4 h-4 text-emerald-400 animate-spin [animation-duration:12s]" />
+                <div className="text-right">
+                  <div className="text-[10px] text-slate-400">مرشدك الذكي نحو الصعود</div>
+                  <div className="text-xs font-black text-emerald-400">من البداية حتى القمة ︽</div>
+                </div>
               </div>
+
             </div>
 
           </div>

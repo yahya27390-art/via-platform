@@ -31,13 +31,46 @@
     radial-gradient(circle at 80% 90%, rgba(34, 197, 94, 0.12) 0%, transparent 40%);
 }
 
-/* Authentic Floating Robot Keyframes */
+/* Scroll-Driven Reveal Utilities */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal="fade-up"] {
+  transform: translateY(40px);
+}
+
+[data-reveal="fade-down"] {
+  transform: translateY(-40px);
+}
+
+[data-reveal="fade-left"] {
+  transform: translateX(-40px);
+}
+
+[data-reveal="fade-right"] {
+  transform: translateX(40px);
+}
+
+[data-reveal="zoom-in"] {
+  transform: scale(0.92);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Keyframe Animations */
 @keyframes floatY {
   0% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-16px) rotate(1.5deg);
+    transform: translateY(-16px) rotate(1.2deg);
   }
   100% {
     transform: translateY(0px) rotate(0deg);
@@ -65,7 +98,52 @@
   }
 }
 
-/* Infinite Marquee for Scroll.webp */
+@keyframes cyberScan {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes thrusterPulse {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.15) translateY(4px);
+    opacity: 0.9;
+  }
+}
+
 @keyframes marqueeScroll {
   0% {
     transform: translateX(0%);
@@ -75,7 +153,6 @@
   }
 }
 
-/* Neon Glow Pulsing */
 @keyframes neonPulse {
   0%, 100% {
     box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(16, 185, 129, 0.2);
@@ -85,15 +162,7 @@
   }
 }
 
-@keyframes glowBorder {
-  0%, 100% {
-    border-color: rgba(34, 197, 94, 0.4);
-  }
-  50% {
-    border-color: rgba(74, 222, 128, 0.8);
-  }
-}
-
+/* Avatar Classes */
 .robo-avatar {
   animation: floatY 4s ease-in-out infinite;
   filter: drop-shadow(0 20px 35px rgba(34, 197, 94, 0.35)) drop-shadow(0 0 60px rgba(16, 185, 129, 0.25));
@@ -104,6 +173,29 @@
   animation: floatr 3.5s ease-in-out infinite;
   filter: drop-shadow(0 15px 30px rgba(34, 197, 94, 0.35));
   will-change: transform;
+}
+
+.cyber-scanner {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #22c55e, #a7f3d0, #22c55e, transparent);
+  box-shadow: 0 0 15px #22c55e, 0 0 25px rgba(34, 197, 94, 0.8);
+  animation: cyberScan 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.spin-slow {
+  animation: spinSlow 35s linear infinite;
+}
+
+.spin-reverse {
+  animation: spinReverse 22s linear infinite;
+}
+
+.thruster-effect {
+  animation: thrusterPulse 2.2s ease-in-out infinite;
 }
 
 .badge-float {
