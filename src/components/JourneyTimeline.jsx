@@ -113,42 +113,29 @@ export default function JourneyTimeline() {
           <div 
             data-reveal="zoom-in"
             style={{ transitionDelay: '200ms' }}
-            className="lg:col-span-5 relative flex items-center justify-center"
+            className="lg:col-span-5 relative flex items-center justify-center select-none"
             onMouseEnter={() => setGuideHover(true)}
             onMouseLeave={() => setGuideHover(false)}
           >
+            {/* Ambient Backlight Glow */}
+            <div className="absolute w-[360px] h-[360px] rounded-full bg-emerald-500/10 blur-[100px] pointer-events-none" />
             
-            {/* Ambient Borderless Nebula Glow */}
-            <div className="absolute w-[380px] h-[380px] rounded-full bg-gradient-to-tr from-emerald-500/25 via-green-500/15 to-transparent blur-3xl animate-pulse" />
-            
-            <div className="relative z-10 max-w-[380px] w-full flex flex-col items-center">
-              
-              {/* Free-Floating Borderless Guide Mascot */}
+            <div className="relative z-10 max-w-[360px] w-full flex flex-col items-center">
+              {/* 100% Free-Floating Borderless Guide Mascot */}
               <div className="relative w-full flex items-center justify-center group">
-                <div className="cyber-scanner rounded-full opacity-60" />
-                
                 <img
                   src="./media/green-arrow-avatar-guide-transparent.png"
                   alt="Green Arrow Growth Guide Mascot"
-                  className="robo-avatar-secondary w-full h-auto max-h-[480px] object-contain drop-shadow-[0_20px_45px_rgba(34,197,94,0.4)] drop-shadow-[0_0_70px_rgba(16,185,129,0.2)] transition-transform duration-500 group-hover:scale-105 select-none"
+                  className="robo-avatar-secondary w-full h-auto max-h-[460px] object-contain select-none transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
                     e.target.src = './media/Robot-1.webp';
                   }}
                 />
               </div>
 
-              {/* Thruster Pulse Glow */}
-              <div className="w-48 h-5 rounded-full bg-gradient-to-r from-transparent via-emerald-400/80 to-transparent blur-md thruster-effect mt-2 shadow-[0_0_25px_rgba(34,197,94,0.7)]" />
-
-              {/* Floating Badge */}
-              <div className="badge-float absolute -bottom-4 right-2 sm:right-6 px-4 py-2.5 rounded-2xl bg-[#080d0a]/95 border border-emerald-500/50 backdrop-blur-xl shadow-[0_12px_30px_rgba(34,197,94,0.35)] flex items-center gap-2.5">
-                <Compass className="w-4 h-4 text-emerald-400 animate-spin [animation-duration:12s]" />
-                <div className="text-right">
-                  <div className="text-[10px] text-slate-400">مرشدك الذكي نحو الصعود</div>
-                  <div className="text-xs font-black text-emerald-400">من البداية حتى القمة ︽</div>
-                </div>
-              </div>
-
+              {/* Realistic Soft Floor Contact Shadow */}
+              <div className="w-44 h-3 rounded-full bg-black/70 blur-sm mx-auto mt-1" />
+              <div className="w-52 h-2 rounded-full bg-emerald-400/15 blur-md mx-auto -mt-1" />
             </div>
 
           </div>

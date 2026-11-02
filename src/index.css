@@ -5,39 +5,37 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Alexandria', 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Readex Pro', 'Alexandria', 'Plus Jakarta Sans', sans-serif;
   }
   
   body {
-    background: #040805;
+    background: #060807;
     color: #f8fafc;
     overflow-x: hidden;
     position: relative;
-    font-family: 'Alexandria', 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Readex Pro', 'Alexandria', 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
     background: #22c55e;
-    color: #040805;
+    color: #060807;
   }
 }
 
-/* Green Arrow Luxury Cyber & Performance Ambient Background */
+/* Green Arrow Luxury Obsidian & Carbon Dot Ambient Background */
 .cosmic-bg {
-  background-color: #040805;
+  background-color: #060807;
   background-image: 
-    /* Subtle high-tech isometric dot matrix */
-    radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.08) 1.5px, transparent 1.5px),
-    /* Cyber grid overlay */
-    linear-gradient(to right, rgba(34, 197, 94, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(34, 197, 94, 0.035) 1px, transparent 1px),
-    /* Deep luminous energy nebulae */
-    radial-gradient(circle at 18% 12%, rgba(34, 197, 94, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 82% 28%, rgba(16, 185, 129, 0.20) 0%, transparent 50%),
-    radial-gradient(circle at 50% 55%, rgba(5, 150, 105, 0.16) 0%, transparent 60%),
-    radial-gradient(circle at 85% 82%, rgba(34, 197, 94, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 15% 92%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
-  background-size: 36px 36px, 72px 72px, 72px 72px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    /* Single dramatic top-center spotlight */
+    radial-gradient(ellipse 85% 45% at 50% 0%, rgba(34, 197, 94, 0.12) 0%, transparent 70%),
+    /* Micro high-precision dot matrix */
+    radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.05) 1px, transparent 1px),
+    /* Precision architectural hairline grid */
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 64px 64px, 64px 64px;
   background-position: center top;
 }
 
@@ -77,13 +75,13 @@
 /* Keyframe Animations */
 @keyframes floatY {
   0% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-16px) rotate(1.2deg);
+    transform: translateY(-12px);
   }
   100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px);
   }
 }
 
@@ -92,7 +90,7 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-10px);
   }
   100% {
     transform: translateY(0px);
@@ -104,7 +102,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
   }
 }
 
@@ -114,10 +112,10 @@
     opacity: 0;
   }
   15% {
-    opacity: 0.8;
+    opacity: 0.6;
   }
   85% {
-    opacity: 0.8;
+    opacity: 0.6;
   }
   100% {
     top: 110%;
@@ -134,26 +132,6 @@
   }
 }
 
-@keyframes spinReverse {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes thrusterPulse {
-  0%, 100% {
-    transform: scale(1) translateY(0);
-    opacity: 0.55;
-  }
-  50% {
-    transform: scale(1.15) translateY(4px);
-    opacity: 0.9;
-  }
-}
-
 @keyframes marqueeScroll {
   0% {
     transform: translateX(0%);
@@ -163,53 +141,21 @@
   }
 }
 
-@keyframes neonPulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(16, 185, 129, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 35px rgba(34, 197, 94, 0.7), 0 0 65px rgba(16, 185, 129, 0.4);
-  }
-}
-
-/* Avatar Classes */
+/* Clean, Borderless 3D Mascot Styling */
 .robo-avatar {
-  animation: floatY 4s ease-in-out infinite;
-  filter: drop-shadow(0 20px 35px rgba(34, 197, 94, 0.35)) drop-shadow(0 0 60px rgba(16, 185, 129, 0.25));
+  animation: floatY 5s ease-in-out infinite;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 45px rgba(34, 197, 94, 0.2));
   will-change: transform;
 }
 
 .robo-avatar-secondary {
-  animation: floatr 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 15px 30px rgba(34, 197, 94, 0.35));
+  animation: floatr 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 40px rgba(34, 197, 94, 0.18));
   will-change: transform;
 }
 
-.cyber-scanner {
-  position: absolute;
-  left: 5%;
-  right: 5%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #22c55e, #a7f3d0, #22c55e, transparent);
-  box-shadow: 0 0 15px #22c55e, 0 0 25px rgba(34, 197, 94, 0.8);
-  animation: cyberScan 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  pointer-events: none;
-}
-
-.spin-slow {
-  animation: spinSlow 35s linear infinite;
-}
-
-.spin-reverse {
-  animation: spinReverse 22s linear infinite;
-}
-
-.thruster-effect {
-  animation: thrusterPulse 2.2s ease-in-out infinite;
-}
-
 .badge-float {
-  animation: floatGentle 3s ease-in-out infinite;
+  animation: floatGentle 3.5s ease-in-out infinite;
 }
 
 .marquee-track {
@@ -222,56 +168,56 @@
   animation-play-state: paused;
 }
 
-/* Custom Glass & Glow Utilities - Green Arrow Obsidian Cards */
+/* Custom Glass & Glow Utilities - Deep Obsidian Cards */
 .via-card {
-  background: rgba(8, 15, 11, 0.75);
+  background: rgba(12, 18, 14, 0.7);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .via-card:hover {
-  background: rgba(12, 22, 16, 0.9);
-  border-color: rgba(74, 222, 128, 0.55);
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px -5px rgba(34, 197, 94, 0.25), 0 0 30px rgba(16, 185, 129, 0.2);
+  background: rgba(16, 24, 19, 0.85);
+  border-color: rgba(74, 222, 128, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px rgba(34, 197, 94, 0.15);
 }
 
 .gradient-text-via {
-  background: linear-gradient(135deg, #ffffff 25%, #4ade80 65%, #22c55e 100%);
+  background: linear-gradient(135deg, #ffffff 15%, #a7f3d0 50%, #34d399 75%, #10b981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-gold {
-  background: linear-gradient(135deg, #a7f3d0 0%, #22c55e 50%, #10b981 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 50%, #22c55e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .btn-via-primary {
-  background: linear-gradient(135deg, #15803d 0%, #22c55e 50%, #10b981 100%);
-  box-shadow: 0 0 25px rgba(34, 197, 94, 0.45);
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #10b981 100%);
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.35);
   transition: all 0.3s ease;
 }
 
 .btn-via-primary:hover {
-  background: linear-gradient(135deg, #16a34a 0%, #4ade80 50%, #22c55e 100%);
-  box-shadow: 0 0 35px rgba(34, 197, 94, 0.8), 0 0 50px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, #22c55e 0%, #4ade80 50%, #10b981 100%);
+  box-shadow: 0 0 35px rgba(34, 197, 94, 0.65), 0 0 50px rgba(16, 185, 129, 0.3);
   transform: translateY(-2px) scale(1.02);
 }
 
 .btn-via-outline {
-  border: 1px solid rgba(34, 197, 94, 0.45);
-  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(12px);
   transition: all 0.3s ease;
 }
 
 .btn-via-outline:hover {
-  background: rgba(34, 197, 94, 0.2);
-  border-color: #22c55e;
-  box-shadow: 0 0 25px rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.25);
   transform: translateY(-2px);
 }
