@@ -57,7 +57,7 @@ export default function HeaderNav() {
               <span className="font-heading font-black text-lg sm:text-xl tracking-tight text-white group-hover:text-emerald-400 transition-colors flex items-center gap-1.5">
                 GREEN ARROW
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">
-                  جرين أرو
+                  السهم الأخضر
                 </span>
               </span>
               <span className="text-[10px] text-emerald-400/90 font-medium tracking-wider">
@@ -85,7 +85,7 @@ export default function HeaderNav() {
             <a
               href={`tel:${phoneNumber}`}
               className="px-3.5 py-2 rounded-full bg-[#080d0a] border border-emerald-500/35 hover:border-emerald-400 text-xs font-bold text-emerald-300 hover:text-white flex items-center gap-2 transition-all hover:bg-emerald-500/10 group shadow-[0_4px_15px_rgba(34,197,94,0.15)]"
-              title="اتصال مباشر بشركة جرين أرو"
+              title="اتصال مباشر بشركة السهم الأخضر"
             >
               <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <PhoneCall className="w-3.5 h-3.5 text-emerald-400 group-hover:rotate-12 transition-transform" />

@@ -25,7 +25,7 @@ export default function FooterNav() {
                 <span className="font-heading font-black text-2xl text-white flex items-center gap-2">
                   GREEN ARROW
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                    جرين أرو
+                    السهم الأخضر
                   </span>
                 </span>
                 <span className="text-[10px] text-emerald-400 font-medium">
@@ -35,7 +35,7 @@ export default function FooterNav() {
             </div>
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              جرين أرو (Green Arrow) - شريكك الاستراتيجي في إعلانات الأداء (Performance Ads) ونمو المبيعات وسيو الذكاء الاصطناعي في المملكة العربية السعودية والخليج العربي.
+              السهم الأخضر (Green Arrow) - شريكك الاستراتيجي في إعلانات الأداء (Performance Ads) ونمو المبيعات وسيو الذكاء الاصطناعي في المملكة العربية السعودية والخليج العربي.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-2.5">
@@ -89,7 +89,7 @@ export default function FooterNav() {
         {/* Bottom Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
           <div className="text-[11px] text-slate-500">
-            جميع الحقوق محفوظة © {new Date().getFullYear()} شركة جرين أرو (Green Arrow - Performance Ads & Growth). مسار مبيعاتك دائماً للأعلى ︽.
+            جميع الحقوق محفوظة © {new Date().getFullYear()} شركة السهم الأخضر (Green Arrow - Performance Ads & Growth). مسار مبيعاتك دائماً للأعلى ︽.
           </div>
 
           <div className="flex items-center gap-4 text-[11px] text-slate-400">

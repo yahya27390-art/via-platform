@@ -3,7 +3,7 @@ import { MessageCircle, PhoneCall } from 'lucide-react';
 
 export default function WhatsAppFloat() {
   const phoneNumber = "0575901487";
-  const whatsappUrl = `https://api.whatsapp.com/send/?phone=966575901487&text=${encodeURIComponent("مرحباً Green Arrow (جرين أرو)، أود الاستفسار عن خدمات نمو المبيعات وإعلانات الأداء لمشروعي.")}&type=phone_number&app_absent=0`;
+  const whatsappUrl = `https://api.whatsapp.com/send/?phone=966575901487&text=${encodeURIComponent("مرحباً Green Arrow (السهم الأخضر)، أود الاستفسار عن خدمات نمو المبيعات وإعلانات الأداء لمشروعي.")}&type=phone_number&app_absent=0`;
 
   return (
     <aside aria-label="محادثة واتساب سريعة" className="fixed bottom-6 left-6 z-50 flex items-center gap-3">

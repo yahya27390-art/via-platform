@@ -37,7 +37,7 @@ export default function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.2] tracking-tight"
             >
               <div className="flex items-center justify-center lg:justify-start gap-3 flex-wrap">
-                <span>جرين أرو</span>
+                <span>السهم الأخضر</span>
                 <span className="font-sans text-emerald-400 font-extrabold tracking-wider text-[0.75em] px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 inline-block">
                   GREEN ARROW
                 </span>
@@ -53,7 +53,7 @@ export default function HeroSection() {
               style={{ transitionDelay: '200ms' }}
               className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
             >
-              في <strong className="text-white font-bold">جرين أرو (Green Arrow)</strong> نقود حملاتك الإعلانية نحو تحقيق أعلى عائد استثماري (ROAS) عبر أحدث خوارزميات الاستهداف الدقيق وسيو الذكاء الاصطناعي وبناء مسارات تحويل تضمن تدفق المبيعات المستدام.
+              في <strong className="text-white font-bold">السهم الأخضر (Green Arrow)</strong> نقود حملاتك الإعلانية نحو تحقيق أعلى عائد استثماري (ROAS) عبر أحدث خوارزميات الاستهداف الدقيق وسيو الذكاء الاصطناعي وبناء مسارات تحويل تضمن تدفق المبيعات المستدام.
             </p>
 
             {/* Direct Official Contact Pill */}
@@ -64,7 +64,7 @@ export default function HeroSection() {
             >
               <span className="text-xs text-slate-300 font-medium flex items-center gap-1.5">
                 <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                الرقم المعتمد لشركة جرين أرو:
+                الرقم المعتمد لشركة السهم الأخضر:
               </span>
               <a 
                 href={`tel:${phoneNumber}`}
