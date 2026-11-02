@@ -44,58 +44,39 @@ export default function GreenArrowHeroAvatar() {
       className="relative flex items-center justify-center cursor-pointer select-none py-6 sm:py-8"
       style={{ perspective: 1200 }}
     >
-      {/* 1. Ambient Emerald Nebula Glow */}
+      {/* 1. Ambient Borderless Emerald Nebula Glow */}
       <div 
-        className={`absolute w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] rounded-full bg-gradient-to-tr from-emerald-500/35 via-green-500/20 to-teal-500/10 blur-[110px] pointer-events-none transition-all duration-700 ${
-          pulseActive ? 'scale-125 opacity-100' : 'opacity-80'
+        className={`absolute w-[380px] h-[380px] sm:w-[520px] sm:h-[520px] rounded-full bg-gradient-to-tr from-emerald-500/30 via-green-500/18 to-teal-500/10 blur-[130px] pointer-events-none transition-all duration-700 ${
+          pulseActive ? 'scale-125 opacity-100' : 'opacity-85'
         }`} 
       />
 
-      {/* 2. Cybernetic Rotating HUD Rings */}
+      {/* 2. 3D Tiltable Free-Floating Borderless Mascot */}
       <div 
-        className="absolute w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] rounded-full border border-emerald-500/25 spin-slow pointer-events-none border-dashed"
-        style={{ borderDasharray: '8 12' }}
-      />
-      <div 
-        className="absolute w-[270px] h-[270px] sm:w-[360px] sm:h-[360px] rounded-full border border-emerald-400/20 spin-reverse pointer-events-none" 
-      />
-      <div 
-        className="absolute w-[220px] h-[220px] sm:w-[300px] sm:h-[300px] rounded-full border border-green-500/15 spin-slow pointer-events-none" 
-      />
-
-      {/* 3. 3D Tiltable Avatar Wrapper */}
-      <div 
-        className="relative z-10 max-w-[340px] sm:max-w-[420px] w-full transition-transform duration-200 ease-out flex flex-col items-center"
+        className="relative z-10 max-w-[340px] sm:max-w-[440px] w-full transition-transform duration-200 ease-out flex flex-col items-center"
         style={{
-          transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale3d(${isHovered ? 1.03 : 1}, ${isHovered ? 1.03 : 1}, 1)`,
+          transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale3d(${isHovered ? 1.04 : 1}, ${isHovered ? 1.04 : 1}, 1)`,
           transformStyle: 'preserve-3d',
         }}
       >
-        {/* Holographic Laser Scanning Beam */}
-        <div className="cyber-scanner rounded-full" />
+        {/* Holographic Laser Scanning Beam (Floating borderless over avatar) */}
+        <div className="cyber-scanner rounded-full opacity-70" />
 
-        {/* Mascot Image with Radial Seamless Edge Vignette */}
-        <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(5,8,6,0.95)] border border-emerald-500/30 group">
+        {/* 100% Free-Floating Mascot (No borders, No card box, Pure organic transparency) */}
+        <div className="relative w-full flex items-center justify-center group">
           <img
-            src="./media/green-arrow-avatar-hero.jpg"
+            src="./media/green-arrow-avatar-hero-transparent.png"
             alt="Green Arrow AI Performance Mascot"
-            className="robo-avatar w-full h-auto max-h-[500px] object-contain transition-transform duration-500 group-hover:scale-105"
+            className="robo-avatar w-full h-auto max-h-[500px] object-contain drop-shadow-[0_20px_45px_rgba(34,197,94,0.45)] drop-shadow-[0_0_80px_rgba(16,185,129,0.25)] transition-transform duration-500 group-hover:scale-105 select-none"
             onError={(e) => {
-              // Fallback to previous Robot.webp if needed
+              // Fallback to transparent Robot.webp if needed
               e.target.src = './media/Robot.webp';
             }}
           />
-
-          {/* Vignette Gradient Overlay to blend seamlessly into background */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050806] via-transparent to-transparent opacity-60 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050806]/40 via-transparent to-transparent pointer-events-none" />
-          
-          {/* Subtle Emerald Inner Rim Glow on Hover */}
-          <div className="absolute inset-0 rounded-3xl border-2 border-emerald-400/0 group-hover:border-emerald-400/40 transition-colors duration-500 pointer-events-none" />
         </div>
 
-        {/* Thruster Energy Glow at bottom */}
-        <div className="w-44 h-5 rounded-full bg-gradient-to-r from-transparent via-emerald-400 to-transparent blur-md thruster-effect mt-2" />
+        {/* Dynamic Thruster Propulsion Energy at Mascot Feet */}
+        <div className="w-56 h-6 rounded-full bg-gradient-to-r from-transparent via-emerald-400/90 to-transparent blur-md thruster-effect mt-2 shadow-[0_0_35px_rgba(34,197,94,0.8)]" />
 
         {/* 4. Multi-Layered Floating Interactive Badges with 3D Depth */}
         

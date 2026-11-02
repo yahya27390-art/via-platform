@@ -118,29 +118,27 @@ export default function JourneyTimeline() {
             onMouseLeave={() => setGuideHover(false)}
           >
             
-            {/* Glowing Rings behind Guide Avatar */}
-            <div className="absolute w-[360px] h-[360px] rounded-full bg-gradient-to-tr from-emerald-500/30 via-green-500/20 to-transparent blur-3xl animate-pulse" />
-            <div className="absolute w-[320px] h-[320px] rounded-full border border-emerald-500/25 spin-reverse pointer-events-none" />
+            {/* Ambient Borderless Nebula Glow */}
+            <div className="absolute w-[380px] h-[380px] rounded-full bg-gradient-to-tr from-emerald-500/25 via-green-500/15 to-transparent blur-3xl animate-pulse" />
             
             <div className="relative z-10 max-w-[380px] w-full flex flex-col items-center">
               
-              {/* Image Frame with Scanning Laser */}
-              <div className="relative rounded-3xl overflow-hidden border border-emerald-500/35 shadow-[0_20px_50px_rgba(5,8,6,0.95)] group">
-                <div className="cyber-scanner rounded-full" />
+              {/* Free-Floating Borderless Guide Mascot */}
+              <div className="relative w-full flex items-center justify-center group">
+                <div className="cyber-scanner rounded-full opacity-60" />
                 
                 <img
-                  src="./media/green-arrow-avatar-guide.jpg"
+                  src="./media/green-arrow-avatar-guide-transparent.png"
                   alt="Green Arrow Growth Guide Mascot"
-                  className="robo-avatar-secondary w-full h-auto max-h-[480px] object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="robo-avatar-secondary w-full h-auto max-h-[480px] object-contain drop-shadow-[0_20px_45px_rgba(34,197,94,0.4)] drop-shadow-[0_0_70px_rgba(16,185,129,0.2)] transition-transform duration-500 group-hover:scale-105 select-none"
                   onError={(e) => {
                     e.target.src = './media/Robot-1.webp';
                   }}
                 />
-
-                {/* Vignette Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050806] via-transparent to-transparent opacity-60 pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#050806]/40 via-transparent to-transparent pointer-events-none" />
               </div>
+
+              {/* Thruster Pulse Glow */}
+              <div className="w-48 h-5 rounded-full bg-gradient-to-r from-transparent via-emerald-400/80 to-transparent blur-md thruster-effect mt-2 shadow-[0_0_25px_rgba(34,197,94,0.7)]" />
 
               {/* Floating Badge */}
               <div className="badge-float absolute -bottom-4 right-2 sm:right-6 px-4 py-2.5 rounded-2xl bg-[#080d0a]/95 border border-emerald-500/50 backdrop-blur-xl shadow-[0_12px_30px_rgba(34,197,94,0.35)] flex items-center gap-2.5">

@@ -5,30 +5,40 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Tajawal', 'Cairo', sans-serif;
+    font-family: 'Alexandria', 'Plus Jakarta Sans', sans-serif;
   }
   
   body {
-    background: #050806;
+    background: #040805;
     color: #f8fafc;
     overflow-x: hidden;
     position: relative;
+    font-family: 'Alexandria', 'Plus Jakarta Sans', sans-serif;
   }
 
   ::selection {
     background: #22c55e;
-    color: #050806;
+    color: #040805;
   }
 }
 
-/* Green Arrow Stealth Obsidian & Emerald Ambient Background */
+/* Green Arrow Luxury Cyber & Performance Ambient Background */
 .cosmic-bg {
-  background-color: #050806;
+  background-color: #040805;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(34, 197, 94, 0.16) 0%, transparent 45%),
-    radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.18) 0%, transparent 50%),
-    radial-gradient(circle at 50% 70%, rgba(5, 150, 105, 0.12) 0%, transparent 60%),
-    radial-gradient(circle at 80% 90%, rgba(34, 197, 94, 0.12) 0%, transparent 40%);
+    /* Subtle high-tech isometric dot matrix */
+    radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.08) 1.5px, transparent 1.5px),
+    /* Cyber grid overlay */
+    linear-gradient(to right, rgba(34, 197, 94, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 197, 94, 0.035) 1px, transparent 1px),
+    /* Deep luminous energy nebulae */
+    radial-gradient(circle at 18% 12%, rgba(34, 197, 94, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 82% 28%, rgba(16, 185, 129, 0.20) 0%, transparent 50%),
+    radial-gradient(circle at 50% 55%, rgba(5, 150, 105, 0.16) 0%, transparent 60%),
+    radial-gradient(circle at 85% 82%, rgba(34, 197, 94, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 15% 92%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+  background-size: 36px 36px, 72px 72px, 72px 72px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-position: center top;
 }
 
 /* Scroll-Driven Reveal Utilities */

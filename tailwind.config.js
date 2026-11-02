@@ -8,8 +8,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        tajawal: ['Tajawal', 'Cairo', 'sans-serif'],
-        cairo: ['Cairo', 'Tajawal', 'sans-serif'],
+        sans: ['Alexandria', 'Plus Jakarta Sans', 'sans-serif'],
+        alexandria: ['Alexandria', 'sans-serif'],
+        tajawal: ['Alexandria', 'sans-serif'],
+        cairo: ['Alexandria', 'sans-serif'],
       },
       colors: {
         ga: {
